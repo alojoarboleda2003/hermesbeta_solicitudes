@@ -95,7 +95,7 @@ if (isset($_POST["idSolicitante"]) && isset($_POST["equipos"])) {
     $solicitud->equipos = json_decode($_POST["equipos"], true);
     $solicitud->fechaInicio = $_POST["fechaInicio"];
     $solicitud->fechaFin = $_POST["fechaFin"];
-    $solicitud->motivo = $_POST["motivo"];
+    $solicitud->motivo = $_POST["motivoSolicitud"];
     $solicitud->ajaxGuardarSolicitud();    
 }
 

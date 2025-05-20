@@ -20,7 +20,7 @@ class ControladorSolicitudes{
             "fecha_inicio" => $datos["fechaInicio"],
             "fecha_fin" => $datos["fechaFin"],
             "tipo_prestamo" => $tipo_prestamo,
-            "motivo" => $datos["motivoSolicitud"],
+            "motivo" => $datos["motivo"],
             "estado_prestamo" => "pendiente",
             "usuario_id" => $datos["idSolicitante"],
             "equipos" => $datos["equipos"]

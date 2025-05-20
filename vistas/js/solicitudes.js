@@ -239,6 +239,7 @@ $('#reservation').on('apply.daterangepicker', function(ev, picker) {
                         window.location = "solicitudes";
                     }
                 });
+                
   
 
     $.ajax({
