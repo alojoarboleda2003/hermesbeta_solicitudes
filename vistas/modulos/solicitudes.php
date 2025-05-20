@@ -273,7 +273,7 @@
                                       <div class="row">
                                           <div class="col-lg-12">
                                               <label>Observaciones</label>
-                                              <textarea class="form-control" rows="3"></textarea>
+                                              <textarea class="form-control" id="motivoSolicitud" rows="3" ></textarea>
                                           </div>
                                       </div>
                                   </div>

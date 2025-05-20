@@ -15,6 +15,7 @@
         public $equipos;
         public $observaciones;
         public $idPrestamo;
+        public $motivo;
 
         
         /*=============================================
@@ -38,14 +39,14 @@
             echo json_encode($respuesta);
         }
 
-        public function ajaxGuardarSolicitud()
+         public function ajaxGuardarSolicitud()
         {
             $datos = array(
                 "idSolicitante" => $this->idSolicitante,
                 "equipos" => $this->equipos,
                 "fechaInicio" => $this->fechaInicio,
                 "fechaFin" => $this->fechaFin,
-                "observaciones" => $this->observaciones
+                "motivo" => $this->motivo
             );
             $respuesta = ControladorSolicitudes::ctrGuardarSolicitud($datos);
             echo json_encode($respuesta);
@@ -94,7 +95,7 @@ if (isset($_POST["idSolicitante"]) && isset($_POST["equipos"])) {
     $solicitud->equipos = json_decode($_POST["equipos"], true);
     $solicitud->fechaInicio = $_POST["fechaInicio"];
     $solicitud->fechaFin = $_POST["fechaFin"];
-    $solicitud->observaciones = $_POST["observaciones"];
+    $solicitud->motivo = $_POST["motivo"];
     $solicitud->ajaxGuardarSolicitud();    
 }
 
