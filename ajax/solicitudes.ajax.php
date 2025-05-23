@@ -13,8 +13,9 @@
         public $idEquipoAgregar;
         public $idSolicitante;
         public $equipos;
-        public $motivo;
+        public $observaciones;
         public $idPrestamo;
+        public $motivo;
 
         
         /*=============================================
@@ -38,7 +39,7 @@
             echo json_encode($respuesta);
         }
 
-        public function ajaxGuardarSolicitud()
+         public function ajaxGuardarSolicitud()
         {
             $datos = array(
                 "idSolicitante" => $this->idSolicitante,
@@ -75,43 +76,50 @@
 
     }// class AjaxSolicitudes
 
-if (isset($_POST["fechaInicio"]) && isset($_POST["fechaFin"])) {
-    $solicitud = new AjaxSolicitudes();
-    $solicitud->fechaInicio = $_POST["fechaInicio"];
-    $solicitud->fechaFin = $_POST["fechaFin"];
-    $solicitud->ajaxMostrarEquiposDisponible();
-}
+if (isset($_POST["accion"])) {
 
-if (isset($_POST["idEquipoAgregar"])) {
     $solicitud = new AjaxSolicitudes();
-    $solicitud->idEquipoAgregar = $_POST["idEquipoAgregar"];
-    $solicitud->ajaxTraerEquipo();
-}
 
-if (isset($_POST["idSolicitante"]) && isset($_POST["equipos"])) {
-    $solicitud = new AjaxSolicitudes();
-    $solicitud->idSolicitante = $_POST["idSolicitante"];
-    $solicitud->equipos = json_decode($_POST["equipos"], true);
-    $solicitud->fechaInicio = $_POST["fechaInicioSolicitud"];
-    $solicitud->fechaFin = $_POST["fechaFinSolicitud"];
-    $solicitud->motivo = $_POST["motivo"];
-    $solicitud->ajaxGuardarSolicitud();    
-}
+    switch ($_POST["accion"]) {
 
-if (isset($_POST["idUsuario"])){
-    $solicitud = new AjaxSolicitudes();
-    $solicitud->idSolicitante = $_POST["idUsuario"];
-    $solicitud->ajaxMostrarSolicitudes();
-}
+        case "guardarSolicitud":
+            $solicitud->idSolicitante = $_POST["idSolicitante"];
+            $solicitud->equipos = json_decode($_POST["equipos"], true);
+            $solicitud->fechaInicio = $_POST["fechaInicio"];
+            $solicitud->fechaFin = $_POST["fechaFin"];
+            $solicitud->motivo = $_POST["motivoSolicitud"];
+            $solicitud->ajaxGuardarSolicitud();
+            break;
 
-if (isset($_POST["idPrestamo"])){
-    $solicitud = new AjaxSolicitudes();
-    $solicitud->idPrestamo = $_POST["idPrestamo"];
-    $solicitud->ajaxMostrarPrestamo();    
-}
-    
-if (isset($_POST["idPrestamoDetalle"])){
-    $solicitud = new AjaxSolicitudes();
-    $solicitud->idPrestamo = $_POST["idPrestamoDetalle"];
-    $solicitud->ajaxMostrarPrestamoDetalle();    
+        case "mostrarEquipos":
+            $solicitud->fechaInicio = $_POST["fechaInicio"];
+            $solicitud->fechaFin = $_POST["fechaFin"];
+            $solicitud->ajaxMostrarEquiposDisponible();
+            break;
+
+        case "traerEquipo":
+            $solicitud->idEquipoAgregar = $_POST["idEquipoAgregar"];
+            $solicitud->ajaxTraerEquipo();
+            break;
+
+        case "mostrarSolicitudes":
+            $solicitud->idSolicitante = $_POST["idUsuario"];
+            $solicitud->ajaxMostrarSolicitudes();
+            break;
+
+        case "mostrarPrestamo":
+            $solicitud->idPrestamo = $_POST["idPrestamo"];
+            $solicitud->ajaxMostrarPrestamo();
+            break;
+
+        case "mostrarPrestamoDetalle":
+            $solicitud->idPrestamo = $_POST["idPrestamoDetalle"];
+            $solicitud->ajaxMostrarPrestamoDetalle();
+            break;
+
+        default:
+            echo json_encode("accion invalida");
+            break;
+    }
+
 }
