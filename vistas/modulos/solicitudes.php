@@ -322,8 +322,9 @@
                     <div class="infoEquiposSolicitados d-none">
 
                         <div class="card">
-                            <button type="button" class="btn btn-primary btn-block" data-toggle="modal"
-                                data-target="#modalHistoricoSolicitudes">Historial</button>
+                            <button type="button" class="btn btn-primary btn-block btnHistorial" id="btnHistorial">
+                                <i class="fas fa-history"></i> Historial
+                            </button>
                         </div>
 
                     </div>
@@ -408,10 +409,10 @@
 
 <!-- Modal para historico de solicitudes -->
 
-<div class="modal fade" id="modalHistoricoSolicitudes">
+<!-- <div class="modal fade" id="modalHistoricoSolicitudes">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
-            <!-- Header -->
+            /** Header */
             <div class="modal-header bg-primary">
                 <h4 class="modal-title">Historical solicitudes</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -419,7 +420,7 @@
                 </button>
             </div>
 
-            <!-- Body -->
+             Body 
             <div class="modal-body">
                 <div class="table-responsive">
                     <table id="tblModalHistoricoSolicitudes" class="table table-bordered table-striped">
@@ -467,26 +468,26 @@
                         </tbody>
                     </table>
                 </div>
-            </div>
+            </div> 
 
-            <!-- Footer -->
+             Footer 
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Salir</button>
             </div>
         </div>
     </div>
-</div>
+</div>-->
 
 
 
 <!-- ############################################################################################################### -->
 
 
-<!-- Modal Detalle Solicitud -->
+<!-- Modal Detalle Solicitud 
 <div class="modal fade" id="detalleSolicitudModal">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
-            <!-- Header -->
+             Header 
             <div class="modal-header bg-primary">
                 <h4 class="modal-title">Solicitud #1234567</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -494,7 +495,7 @@
                 </button>
             </div>
 
-            <!-- Body -->
+             Body 
             <div class="modal-body">
                 <div class="table-responsive">
                     <table class="table table-bordered table-striped">
@@ -557,10 +558,10 @@
                 </div>
             </div>
 
-            <!-- Footer -->
+             Footer
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger p-10" data-dismiss="modal">Salir</button>
             </div>
         </div>
     </div>
-</div>
+</div>-->

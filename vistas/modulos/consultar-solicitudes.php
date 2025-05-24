@@ -18,7 +18,7 @@
                         <div class="card-body">
                             <div class="input-group">
                                 <input type="text" id="cedulaUsuario" class="form-control"
-                                    placeholder="Ingrese número de cédula">
+                                    placeholder="Ingrese número de documento">
                                 <div class="input-group-append">
                                     <button class="btn btn-primary" id="btnBuscarUsuarioConsultar">
                                         <i class="fas fa-search"></i> Buscar
