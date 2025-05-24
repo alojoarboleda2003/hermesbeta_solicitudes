@@ -16,6 +16,7 @@
         public $observaciones;
         public $idPrestamo;
         public $motivo;
+        public $alonso;
 
         
         /*=============================================
