@@ -106,6 +106,18 @@ class ModeloSolicitudes
         return $stmt->fetchAll(PDO::FETCH_KEY_PAIR); // [categoria_id => cantidad]
     }
 
+    public static function mdlContarEquiposReserva() {
+    $stmt = Conexion::conectar()->prepare("
+        SELECT categoria_id, COUNT(*) as cantidad
+        FROM equipos
+        WHERE id_estado = 3
+        GROUP BY categoria_id
+    ");
+    $stmt->execute();
+    return $stmt->fetchAll(PDO::FETCH_KEY_PAIR); 
+    }
+
+
     static public function mdlMostrarSolicitudes($item, $valor)
     {
 

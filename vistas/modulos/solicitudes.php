@@ -27,12 +27,18 @@
                     <!-- small box -->
                     <?php
                     $conteos = ControladorSolicitudes::ctrContarEquiposPorCategoria();
+                    $conteos2 = ControladorSolicitudes::ctrContarEquiposReserva();
                     ?>
                     <div class="small-box bg-info">
                         <div class="inner">
-                            <h3><?php echo isset($conteos[1]) ? $conteos[1] : 0; ?></h3>
+                            <div>
+                                <span style="margin-right:10px; display:inline;">Disponibles</span>
+                                <h4 style="display:inline;"><?php echo isset($conteos[1]) ? $conteos[1] : 0; ?></h4>
+                            </div>
+                            <span style="margin-right:10px; display:inline;">Reservados</span>
+                            <h4 style="display:inline;"><?php echo isset($conteos2[1]) ? $conteos2[1] : 0; ?></h4>
 
-                            <p>Portátiles</p>
+                            <h3>Portátiles</h3>
                         </div>
                         <div class="icon">
                             <i class="fas fa-desktop"></i>
@@ -45,9 +51,15 @@
                     <!-- small box -->
                     <div class="small-box bg-info">
                         <div class="inner">
-                            <h3><?php echo isset($conteos[2]) ? $conteos[2] : 0; ?></h3>
+                            <div>
+                                <span style="margin-right:10px; display:inline;">Disponibles</span>
+                                <h4 style="display:inline;"><?php echo isset($conteos[3]) ? $conteos[3] : 0; ?></h4>
+                            </div>
+                            <span style="margin-right:10px; display:inline;">Reservados</span>
+                            <h4 style="display:inline;"><?php echo isset($conteos2[3]) ? $conteos2[3] : 0; ?></h4>
+                            
 
-                            <p>Sonido</p>
+                            <h3>Sonido</h3>
                         </div>
                         <div class="icon">
                             <i class="fas fa-volume-up"></i>
@@ -60,9 +72,15 @@
                     <!-- small box -->
                     <div class="small-box bg-info">
                         <div class="inner">
-                            <h3><?php echo isset($conteos[3]) ? $conteos[3] : 0; ?></h3>
+                            <div>
+                                <span style="margin-right:10px; display:inline;">Disponibles</span>
+                                <h4 style="display:inline;"><?php echo isset($conteos[2]) ? $conteos[2] : 0; ?></h4>
+                            </div>
+                            <span style="margin-right:10px; display:inline;">Reservados</span>
+                            <h4 style="display:inline;"><?php echo isset($conteos2[2]) ? $conteos2[2] : 0; ?></h4>
+                            
 
-                            <p>Videobeam</p>
+                            <h3>Videobeam</h3>
                         </div>
                         <div class="icon">
                             <i class="fas fa-video"></i>
@@ -75,9 +93,15 @@
                     <!-- small box -->
                     <div class="small-box bg-info">
                         <div class="inner">
-                            <h3><?php echo isset($conteos[5]) ? $conteos[5] : 0; ?></h3>
+                            <div>
+                                <span style="margin-right:10px; display:inline;">Disponibles</span>
+                                <h4 style="display:inline;"><?php echo isset($conteos[5]) ? $conteos[5] : 0; ?></h4>
+                            </div>
+                            <span style="margin-right:10px; display:inline;">Reservados</span>
+                            <h4 style="display:inline;"><?php echo isset($conteos2[5]) ? $conteos2[5] : 0; ?></h4>
+                            
 
-                            <p>Control remoto</p>
+                            <h3>Control remoto</h3>
                         </div>
                         <div class="icon">
                             <i class="fas fa-gamepad"></i>
