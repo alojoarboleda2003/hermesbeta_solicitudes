@@ -85,7 +85,7 @@ class ControladorPermisos
         }
     }
 
-    static public function ctrListarPermisos(){
+    static public function ctrListarTodosPermisos(){
         $tabla = "permisos";
         $respuesta = ModeloPermisos::mdlListarTodosPermisos($tabla);
 
