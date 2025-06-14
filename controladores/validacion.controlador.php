@@ -31,8 +31,8 @@ class ControladorValidacion {
             return false;
         }
 
-        // Verificar si el permiso existe en el array de permisos
-        return in_array($permiso, $_SESSION["permisos"]);
+        // // Verificar si el permiso existe en el array de permisos
+        // return in_array($permiso, $_SESSION["permisos"]);
     }
 
 }
