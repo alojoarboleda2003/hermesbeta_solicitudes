@@ -4,6 +4,9 @@ AdminLTE/
 /.htaccess
 /modelos/conexion.php
 /ajax/serverside/serverside.conexion.php
+modelos/conexion.php
+ajax/serverside/serverside.conexion.php
+Dumps/
 
 # dumps
 dumps/
