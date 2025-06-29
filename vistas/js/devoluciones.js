@@ -17,15 +17,11 @@ $(document).ready(function() {
 
                     // Imagen y datos básicos del usuario
                     $('#userImage').attr('src', datosPrestamo.foto ? datosPrestamo.foto : 'vistas/img/usuarios/default/anonymous.png');
-                    $('#userName').text(datosPrestamo.nombre + ' ' + datosPrestamo.apellido);
-                    $('#userRol').text(datosPrestamo.nombre_rol || 'No especificado');
                     $('#userName').text(datosPrestamo.nombre_usuario + ' ' + datosPrestamo.apellido_usuario);
                     $('#userRol').text(datosPrestamo.nombre_rol || 'No especificado'); // Updated to use nombre_rol
 
                     // Información del préstamo
                     $('#prestamoIdentificacion').text(datosPrestamo.numero_documento || 'No disponible');
-                    $('#prestamoNombre').text(datosPrestamo.nombre_usuario || 'No disponible');
-                    $('#prestamoApellido').text(datosPrestamo.apellido_usuario || 'No disponible');
                     $('#prestamoTelefono').text(datosPrestamo.telefono || 'No disponible');
                     $('#prestamoFicha').text(datosPrestamo.ficha_codigo || 'No asignada');
                     $('#prestamoTipo').text(datosPrestamo.tipo_prestamo || 'No especificado');
@@ -125,13 +121,13 @@ $(document).ready(function() {
                 },
                 dataType: "json",
                 success: function(respuesta) {
-                    if (respuesta && respuesta.success) { 
-                        Swal.fire({
-                            icon: "success",
-                            title: respuesta.title || "¡Acción completada!",
+                    console.log(respuesta.title);
+                    if (respuesta && respuesta.success) {
+                        Toast.fire({
+                            icon: 'success',
+                            title: '¡Acción completada!',
                             text: respuesta.message,
-                            showConfirmButton: false,
-                            timer: 2000
+                            position: "top-end"
                         }).then(() => {
                             $buttonPressed.closest('tr').fadeOut(500, function() {
                                 $(this).remove();
@@ -303,7 +299,7 @@ $(document).ready(function() {
             url: "ajax/devoluciones.ajax.php",
             method: "POST",
             data: {
-                accion: "marcarMantenimientoConMotivo",
+                accion: "marcarMantenimiento",
                 idPrestamo: prestamoId,
                 idEquipo: equipoId,
                 motivo: motivo
