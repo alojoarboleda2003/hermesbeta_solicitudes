@@ -14,8 +14,10 @@ class ControladorSolicitudes
         //si la fecha inicio es igual a la fecha fin el tipo_prestamo es "imediata"
         if($datos["fechaInicio"] == $datos["fechaFin"]){
             $tipo_prestamo = "Inmediato";
+            $estado_prestamo = "Prestado";
         }else{
             $tipo_prestamo = "Reservado";
+            $estado_prestamo = "Pendiente";
         }
 
         $datos = array(
@@ -23,7 +25,7 @@ class ControladorSolicitudes
             "fecha_fin" => $datos["fechaFin"],
             "tipo_prestamo" => $tipo_prestamo,
             "motivo" => $datos["motivo"],
-            "estado_prestamo" => "pendiente",
+            "estado_prestamo" => $estado_prestamo,
             "usuario_id" => $datos["idSolicitante"],
             "equipos" => $datos["equipos"]
         );
@@ -65,12 +67,30 @@ class ControladorSolicitudes
         return $respuesta;
     }
 
+    static public function ctrContarPrestamosPorEstado($estado_prestamo, $fecha)
+    {
+        $tabla = "prestamos";
+        $respuesta = ModeloSolicitudes::mdlContarPrestamosPorEstado($tabla, $estado_prestamo, $fecha);
+        return $respuesta;
+
+    }
+
+    static public function ctrContarDevoluciones($fecha)
+    {
+        $tabla = "prestamos";
+        $respuesta = ModeloSolicitudes::mdlContarDevoluciones($tabla, $fecha);
+        return $respuesta;
+    }
+
+
+
+
     public static function ctrContarEquiposPorCategoria() {
         return ModeloSolicitudes::mdlContarEquiposPorCategoria();
     }
-
     
-
-
+    public static function ctrContarEquiposPorReserva() {
+        return ModeloSolicitudes::mdlContarEquiposPorReserva();
+    }
 
 }

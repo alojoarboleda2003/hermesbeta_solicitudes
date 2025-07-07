@@ -31,17 +31,31 @@ $('#tblUsuarios').DataTable({
         {
             "targets": [8],
             "render": function(data, type, row) {
-                if (data === "activo") {
-                    return "<button title='Inactivar usuario' class='btn btn-success btnActivarUsuario' data-id='" + row[0] + "' data-estado='inactivo'>Activo</button>";
+                if(usuarioActual["permisos"].includes(40)){ // Validación #40:  Permite activar y desactivar al usuario
+                    if (data === "activo") {
+                        return "<button title='Inactivar usuario' class='btn btn-success btnActivarUsuario' data-id='" + row[0] + "' data-estado='inactivo'>Activo</button>";
+                    } else {
+                        return "<button title='Activar usuario' class='btn btn-danger btnActivarUsuario' data-id='" + row[0] + "' data-estado='activo'>Inactivo</button>";                    
+                    }
                 } else {
-                    return "<button title='Activar usuario' class='btn btn-danger btnActivarUsuario' data-id='" + row[0] + "' data-estado='activo'>Inactivo</button>";                    
+                    if (data === "activo") {
+                        return "<button title='Inactivar usuario' class='btn btn-success btnActivarUsuario' disabled data-id='" + row[0] + "' data-estado='inactivo'>Activo</button>";
+                    } else {
+                        return "<button title='Activar usuario' class='btn btn-danger btnActivarUsuario' disabled data-id='" + row[0] + "' data-estado='activo'>Inactivo</button>";                    
+                    }
                 }
             }
         },
         {
             "targets": [-1],
             "render": function(data, type, row) {
-            return "<div class='btn-group'><button title='Consultar detalles de usuario' class='btn btn-default btnConsultarUsuario' idUsuario='" + row[0] + "' data-toggle='modal' data-target='#modalConsularUsuario'><i class='fas fa-eye'></i></button><button title='Editar usuario' class='btn btn-default btnEditarUsuario' idUsuario='" + row[0] + "' data-toggle='modal' data-target='#modalEditarUsuario'><i class='fas fa-edit'></i></button><button title='Solicitudes del usuario' class='btn btn-default btnSolicitudesUsuario' idUsuario='" + row[0] + "' data-numero-documento='"+ row[2] +"' data-toggle='modal' data-target='#modalSolicitudesUsuario'><i class='fas fa-laptop'></i></button></div>"
+                if(usuarioActual["permisos"].includes(37)){ // Validación #37: Permite el acceso a los detalles del usuario
+                    // Validación #38: Permite editar los datos del usuario
+                    // Validación #39: Permite ver las solicitudes del usuario
+                    return "<div class='btn-group'><button title='Consultar detalles de usuario' class='btn btn-default btnConsultarUsuario' idUsuario='" + row[0] + "' data-toggle='modal' data-target='#modalConsularUsuario'><i class='fas fa-eye'></i></button><button title='Editar usuario' class='btn btn-default btnEditarUsuario' " + (usuarioActual["permisos"].includes(38) ? "" : "disabled") + " idUsuario='" + row[0] + "' data-toggle='modal' data-target='#modalEditarUsuario'><i class='fas fa-edit'></i></button><button title='Solicitudes del usuario' class='btn btn-default btnSolicitudesUsuario' " + (usuarioActual["permisos"].includes(39) ? "" : "disabled") + " idUsuario='" + row[0] + "' data-numero-documento='"+ row[2] +"' data-toggle='modal' data-target='#modalSolicitudesUsuario'><i class='fas fa-laptop'></i></button></div>"
+                } else {
+                    return "<div class='btn-group'><button title='Consultar detalles de usuario' class='btn btn-default btnConsultarUsuario' disabled idUsuario='" + row[0] + "' data-toggle='modal' data-target='#modalConsularUsuario'><i class='fas fa-eye'></i></button><button title='Editar usuario' class='btn btn-default btnEditarUsuario' " + (usuarioActual["permisos"].includes(38) ? "" : "disabled") + " idUsuario='" + row[0] + "' data-toggle='modal' data-target='#modalEditarUsuario'><i class='fas fa-edit'></i></button><button title='Solicitudes del usuario' class='btn btn-default btnSolicitudesUsuario' " + (usuarioActual["permisos"].includes(39) ? "" : "disabled") + " idUsuario='" + row[0] + "' data-numero-documento='"+ row[2] +"' data-toggle='modal' data-target='#modalSolicitudesUsuario'><i class='fas fa-laptop'></i></button></div>"
+                }
             }
         },
         {
@@ -49,14 +63,26 @@ $('#tblUsuarios').DataTable({
             "render": function(data, type, row) {
                 let condicion = row[9];
                 let idUsuario = row[0];
-                if (condicion === "en_regla") {
-                    return `<button class="btn btn-success  btnCambiarCondicionUsuario" idUsuario="${idUsuario}" condicionUsuario="advertido">En regla</button>`;
-                } else if (condicion === "advertido") {
-                    return `<button class="btn btn-warning  btnCambiarCondicionUsuario" idUsuario="${idUsuario}" condicionUsuario="penalizado">Advertido</button>`;
-                } else if (condicion === "penalizado") {
-                    return `<button class="btn btn-danger  btnCambiarCondicionUsuario" idUsuario="${idUsuario}" condicionUsuario="en_regla">Penalizado</button>`;
+                if(usuarioActual["permisos"].includes(41)){ // Validación #41:  Permite alternar las diferentes condiciones de usuario (En regla, Advertido, Penalizado)
+                    if (condicion === "en_regla") {
+                        return `<button class="btn btn-success  btnCambiarCondicionUsuario" idUsuario="${idUsuario}" condicionUsuario="advertido">En regla</button>`;
+                    } else if (condicion === "advertido") {
+                        return `<button class="btn btn-warning  btnCambiarCondicionUsuario" idUsuario="${idUsuario}" condicionUsuario="penalizado">Advertido</button>`;
+                    } else if (condicion === "penalizado") {
+                        return `<button class="btn btn-danger  btnCambiarCondicionUsuario" idUsuario="${idUsuario}" condicionUsuario="en_regla">Penalizado</button>`;
+                    } else {
+                        return '';
+                    }
                 } else {
-                    return '';
+                    if (condicion === "en_regla") {
+                        return `<button class="btn btn-success  btnCambiarCondicionUsuario" disabled idUsuario="${idUsuario}" condicionUsuario="advertido">En regla</button>`;
+                    } else if (condicion === "advertido") {
+                        return `<button class="btn btn-warning  btnCambiarCondicionUsuario" disabled idUsuario="${idUsuario}" condicionUsuario="penalizado">Advertido</button>`;
+                    } else if (condicion === "penalizado") {
+                        return `<button class="btn btn-danger  btnCambiarCondicionUsuario" disabled idUsuario="${idUsuario}" condicionUsuario="en_regla">Penalizado</button>`;
+                    } else {
+                        return '';
+                    }
                 }
             }
         },
