@@ -36,6 +36,9 @@
                                         <th>Usuario</th>
                                         <th>Tipo de Préstamo</th>
                                         <th>Estado De Préstamo</th>
+                                        <th>Coor</th>
+                                        <th>Tic</th>
+                                        <th>Alm</th>
                                         <th>Acciones</th>
                                     </tr>
                                 </thead>
@@ -46,26 +49,41 @@
                                     $salidas = Controladorsalidas::ctrMostrarsalidas($item, $valor);
 
                                     foreach ($salidas as $key => $value) {
+                                        $item = "id_prestamo";
+                                        $valor = $value["id_prestamo"];
+                                        $autorizaciones = ControladorAutorizaciones::ctrMostrarAutorizaciones($item, $valor);
+                                        // var_dump($autorizaciones);
+                                        if (($value["tipo_prestamo"] == "Reservado")){
                                         echo '
                                         <tr>
                                             <td>' . $value["id_prestamo"] . '</td>
                                             <td>' . $value["nombre"] . '</td>
                                             <td>' . $value["tipo_prestamo"] . '</td>
-                                            <td>' . $value["estado_prestamo"] . '</td>
-                                            <td>
-                                                <div class="btn-group">
-                                                    <button title="Ver detalles" class="btn btn-default btn-sm btnVerDetalles" data-id="' . $value["id_prestamo"] . '" data-toggle="modal" data-target="#modalDetallesPrestamo">
-                                                        <i class="fas fa-eye"></i>
-                                                    </button>
-                                                    <button title="Editar préstamo" class="btn btn-default btn-sm btnEditarPrestamo" data-id="' . $value["id_prestamo"] . '" data-toggle="modal" data-target="#modalEditarPrestamo">
-                                                        <i class="fas fa-edit"></i>
-                                                    </button>
-                                                    <button title="Solicitudes relacionadas" class="btn btn-default btn-sm btnSolicitudesPrestamo" data-id="' . $value["id_prestamo"] . '" data-toggle="modal" data-target="#modalSolicitudesPrestamo">
-                                                        <i class="fas fa-laptop"></i>
-                                                    </button>
-                                                </div>
-                                            </td>
-                                        </tr>';
+                                            <td>' . $value["estado_prestamo"] . '</td>';
+                                                if (isset($autorizaciones["firma_coordinacion"]) && $autorizaciones["firma_coordinacion"] == "Firmado") {
+                                                    echo '<td><input type="checkbox" checked disabled title="Aprobado por '. $autorizaciones["nombre_usuario_coordinacion"] .'">' . '</td>';
+                                                } else {
+                                                    echo '<td><input type="checkbox" disabled title="En trámite...">' . '</td>';
+                                                }
+                                                if (isset($autorizaciones["firma_lider_tic"]) && $autorizaciones["firma_lider_tic"] == "Firmado") {
+                                                    echo '<td><input type="checkbox" checked disabled title="Aprobado por '. $autorizaciones["nombre_usuario_lider_tic"] .'">' . '</td>';
+                                                } else {
+                                                    echo '<td><input type="checkbox" disabled title="En trámite...">' . '</td>';
+                                                }
+                                                if (isset($autorizaciones["firma_almacen"]) && $autorizaciones["firma_almacen"] == "Firmado") {
+                                                    echo '<td><input type="checkbox" checked disabled title="Aprobado por '. $autorizaciones["nombre_usuario_almacen"] .'">' . '</td>';
+                                                } else {
+                                                    echo '<td><input type="checkbox" disabled title="En trámite...">' . '</td>';
+                                                }
+                                                echo '<td>
+                                                    <div class="btn-group">
+                                                        <button title="Ver detalles" class="btn btn-default btn-sm btnVerDetalles" data-id="' . $value["id_prestamo"] . '" data-toggle="modal" data-target="#modalDetallesPrestamo">
+                                                            <i class="fas fa-eye"></i>
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                            </tr>';
+                                        }
                                     }
                                     ?>
                                 </tbody>
@@ -123,7 +141,7 @@
                             </div>
                             <div class="card-body p-10">
                                 <table class="table table-bordered table-striped " id="tblDetallePrestamo">
-                                    <thead>
+                                    <thead class="bg-dark">
                                         <tr>
                                             <th>ID</th>
                                             <th>Categoría</th>
