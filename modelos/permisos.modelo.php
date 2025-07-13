@@ -55,7 +55,7 @@ class ModeloPermisos
 
     static public function mdlTraerPermisos($tabla){
 
-        $stmt = Conexion::conectar()->prepare("SELECT   p.id_permiso, p.nombre AS nombre_permiso, 
+        $stmt = Conexion::conectar()->prepare("SELECT   p.id_permiso, p.nombre AS nombre_permiso,
                                                         p.descripcion AS descripcion_permiso,  m.nombre AS nombre_modulo,
                                                         m.id_modulo
                                                         FROM permisos p
