@@ -181,9 +181,10 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="reporte-equipos" class="nav-link">
+                <a href="historial-equipos" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Reportes</p>
+                  <p>Historial equipos</p>
+
                 </a>
               </li>
             </ul>';
