@@ -30,6 +30,12 @@
                 <span class="bg-green">15 Jul. 2025</span>
               </div>
               <div>
+                <?php
+                
+                $item = null; $valor = null;
+                $trazabilidad = ControladorTrazabilidadEquipos::ctrTrazabilidadAgregarEquipo($item, $valor);
+                
+                ?>
                 <i class="fas fa-laptop-medical bg-blue"></i>
                 <div class="timeline-item">
                   <span class="time"><i class="fas fa-clock"></i> 09:30</span>

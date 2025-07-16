@@ -111,8 +111,6 @@ session_start();
     echo '<script>
         const usuarioActual = {
             id: ' . $_SESSION['id_usuario'] . ',
-            nombre: ' . json_encode($_SESSION['nombre']) . ',
-            apellido: ' . json_encode($_SESSION['apellido']) . ',
             permisos: ' . json_encode($_SESSION['permisos']) . '  
         }
     </script>';
