@@ -34,13 +34,13 @@
                 //var_dump($trazabilidades);
                 foreach ($trazabilidades as $value) {
                   echo '<div class="time-label">
-                    <span class="bg-green">15 Jul. 2025</span>
+                    <span class="bg-green">'. substr($value["fecha_accion"], 2, 8) .'</span>
                     </div>
                     <div>
                     '. $value["icono"] .'
                     <div class="timeline-item">
-                      <span class="time"><i class="fas fa-clock"></i> 09:30</span>
-                      <h3 class="timeline-header"><a href="#">Sistema </a>' . $value["titulo"] .'</h3>'
+                      <span class="time"><i class="fas fa-clock"></i>'. substr($value["fecha_accion"], 11, 5) .'</span>
+                      <h3 class="timeline-header bg-dark rounded-top"><a href="#">Sistema: </a>' . $value["titulo"] .'</h3>'
                       .$value['descripcion'].'
 
                       <div class="timeline-footer">
@@ -54,7 +54,7 @@
 
               <!-- Evento 2: Asignación a técnico -->
               <div>
-                <i class="fas fa-user-cog bg-orange"></i>
+                <i class="fas fa-edit bg-yellow"></i>
                 <div class="timeline-item">
                   <span class="time"><i class="fas fa-clock"></i> 11:15</span>
                   <h3 class="timeline-header"><a href="#">Laura Rodríguez</a> asignó equipo</h3>

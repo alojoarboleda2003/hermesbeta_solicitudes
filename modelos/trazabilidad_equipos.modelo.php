@@ -6,7 +6,7 @@ class ModeloTrazabilidadEquipos{
 
     static public function mdlMTrazabilidadAgregarEquipo($tabla){
         try{
-            $stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE id_trazabilidad = 1");
+            $stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE id_trazabilidad BETWEEN 1 AND 5");
 
             $stmt->execute();
             return $stmt->fetchAll();
