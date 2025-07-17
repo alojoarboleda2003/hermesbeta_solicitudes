@@ -26,31 +26,31 @@
             <div class="timeline">
 
               <!-- Evento 1: Creación de equipo -->
-              <div class="time-label">
-                <span class="bg-green">15 Jul. 2025</span>
-              </div>
-              <div>
-                <?php
+              <?php
                 
                 $item = null; $valor = null;
-                $trazabilidad = ControladorTrazabilidadEquipos::ctrTrazabilidadAgregarEquipo($item, $valor);
+                $trazabilidades = ControladorTrazabilidadEquipos::ctrTrazabilidadAgregarEquipo($item, $valor);
+                // error_log(print_r($trazabilidades), true);
+                //var_dump($trazabilidades);
+                foreach ($trazabilidades as $value) {
+                  echo '<div class="time-label">
+                    <span class="bg-green">15 Jul. 2025</span>
+                    </div>
+                    <div>
+                    '. $value["icono"] .'
+                    <div class="timeline-item">
+                      <span class="time"><i class="fas fa-clock"></i> 09:30</span>
+                      <h3 class="timeline-header"><a href="#">Sistema </a>' . $value["titulo"] .'</h3>'
+                      .$value['descripcion'].'
+
+                      <div class="timeline-footer">
+                        <a class="btn btn-info btn-sm">Detalles técnicos</a>
+                      </div>
+                    </div>
+                  </div>';
+                }
                 
                 ?>
-                <i class="fas fa-laptop-medical bg-blue"></i>
-                <div class="timeline-item">
-                  <span class="time"><i class="fas fa-clock"></i> 09:30</span>
-                  <h3 class="timeline-header"><a href="#">Sistema</a> agregó nuevo equipo</h3>
-                  <div class="timeline-body">
-                    <strong>Equipo:</strong> Servidor Dell R750<br>
-                    <strong>Serial:</strong> DL-7X8H23F<br>
-                    <strong>Ubicación:</strong> Sala de Servidores A<br>
-                    <strong>Responsable:</strong> Carlos Mendoza
-                  </div>
-                  <div class="timeline-footer">
-                    <a class="btn btn-info btn-sm">Detalles técnicos</a>
-                  </div>
-                </div>
-              </div>
 
               <!-- Evento 2: Asignación a técnico -->
               <div>
