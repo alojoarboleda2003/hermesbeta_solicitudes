@@ -21,9 +21,21 @@ class ControladorInicio
         return $resultado;
     }
 
-    public static function ctrObtenerEstadosEquipos() {
+    public static function ctrObtenerEstadosEquipos()
+    {
         $tabla = "equipos";
         $respuesta = ModeloInicio::mdlObtenerEstadosEquipos($tabla);
         return $respuesta;
     }
+
+
+    static public function ctrContarUsuariosPorGenero($codigoFicha)
+    {
+        $respuesta = ModeloInicio::mdlContarUsuariosPorGenero($codigoFicha);
+        return $respuesta;
+
+    
+    }
+
+
 }

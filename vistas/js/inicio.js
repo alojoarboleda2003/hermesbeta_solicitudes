@@ -14,7 +14,7 @@ function cargarGrafico(tipo = 'actual') {
   })
     .then(res => res.json())
     .then(data => {
-      console.log(data); 
+      console.log(data);
       const dias = data.map(d => d.dia);
       const cantidades = data.map(d => d.cantidad);
 
@@ -45,7 +45,7 @@ function cargarGrafico(tipo = 'actual') {
             y: {
               beginAtZero: true,
               suggestedMin: 0,
-              suggestedMax: 5,
+              suggestedMax: 10,
               ticks: { color: '#000' }
             }
           }
@@ -63,41 +63,90 @@ cargarGrafico();
 
 // Fin de grafica
 
-  // Fin de grafica
-// Obtenniendo los datos de los equipos
-var datos = FormData();
-datos.append("datosGrafica", datosGraficas);
 
-$.ajax({
-  url: "ajax/inicio.ajax.php",
-  method: "POST",
-  data: datos,
-  cache: false,
-  contentType: false,
-  processData: false,
-  dataType: "json",
-  success: function (respuesta) {
-    console.log("respuesta", respuesta);
-    // Graficas de equipos por estado (Gràfica pastel)- David
-    const graficasPastelEquipos = new Chart(document.getElementById('pie-chart-equipos'), {
-      type: 'pie',
-      data: {
+document.getElementById('btnBuscarFicha').addEventListener('click', function (e) {
+  e.preventDefault();
+  const codigoFicha = document.getElementById('NumeroIdFicha').value;
+
+
+  fetch('ajax/inicio.ajax.php', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: 'codigoFicha=' + encodeURIComponent(codigoFicha)
+
+
+  })
+    .then(res => res.json())
+    .then(data => {
+      const nombreFicha = data.nombre_ficha ?? 'Desconocida';
+      const total = data.total ?? 'Desconocido';
+      console.log(data);
+      const ctx3 = document.getElementById('graficoUsuarios').getContext('2d');
+
+      // Validar que el gráfico existe y se puede destruir
+      if (window.graficoUsuarios instanceof Chart) {
+        window.graficoUsuarios.destroy();
+      }
+
+      window.graficoUsuarios = new Chart(ctx3, {
+        type: 'bar',
+        data: {
+          labels: ['Hombres', 'Mujeres', 'Otros'],
+          datasets: [{
+            label: 'Ficha: ' + nombreFicha,
+            data: [data.hombres, data.mujeres, data.otros],
+            backgroundColor: [
+              'rgba(13, 232, 101, 0.6)',
+              'rgba(235, 19, 66, 0.6)',
+              'rgba(178, 132, 17, 0.6)'
+            ],
+            borderColor: [
+              'rgba(0, 0, 0, 1)',
+              'rgba(18, 18, 18, 1)',
+              'rgba(10, 10, 10, 1)'
+            ],
+            borderWidth: 1
+          }]
+        },
         options: {
           responsive: true,
           maintainAspectRatio: false,
+          scales: {
+            x: {
+              ticks: { color: '#000' }
+            },
+            y: {
+              beginAtZero: true,
+              suggestedMin: 0,
+              suggestedMax: 10,
+              ticks: { color: '#000' }
+            }
+          },
           plugins: {
-            legend: { labels: { color: '#000' } }
+            legend: { labels: { color: '#000' } },
+            title: {
+              display: true,
+              text: `Total Usuarios: ${total}`,
+              color: '#000',
+              font: {
+                size: 16
+              }
+            }
           }
-        },
-        labels: [],
-        datasets: [{
-          data: [],
-          backgroundColor: ['#4e73df', '#1cc88a', '#36b9cc', '#f6c23e']
-        }]
-      }
+        }
+
+
+      });
+    })
+    .catch(error => {
+      console.error('Error al buscar la ficha:', error);
+      alert('Error al buscar la ficha. Por favor, inténtelo de nuevo.');
     });
-  }
-})
+});
+
+document.getElementById('NumeroIdFicha').value = ''; // o cualquier valor por defecto
+document.getElementById('btnBuscarFicha').click(); // simula clic para cargar el gráfico
+
 
 
 

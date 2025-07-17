@@ -78,4 +78,32 @@ class ModeloInicio
             $stmt = null;
         }
     }
+
+
+    static public function mdlContarUsuariosPorGenero($codigoFicha)
+    {
+        $tablaUsuarios = "usuarios";
+        $tablaAprendices = "aprendices_ficha";
+        $tablaFichas = "fichas";
+
+        $db = Conexion::conectar();
+
+        $sql = "SELECT 
+                u.genero,
+                f.descripcion AS nombre_ficha,
+                COUNT(*) as cantidad
+            FROM $tablaUsuarios u
+            INNER JOIN $tablaAprendices af ON u.id_usuario = af.id_usuario
+            INNER JOIN $tablaFichas f ON af.id_ficha = f.id_ficha
+            WHERE f.codigo = :codigoFicha
+            GROUP BY u.genero";
+
+        $stmt = $db->prepare($sql);
+        $stmt->bindParam(":codigoFicha", $codigoFicha, PDO::PARAM_STR);
+        $stmt->execute();
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+
 }

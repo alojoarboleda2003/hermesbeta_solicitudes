@@ -91,7 +91,7 @@
                 </div>
               </div>
               <div class="card-body">
-              <canvas id="pie-chart-equipos" style="min-height: 250px; height: 150px;"></canvas>
+                <canvas id="pie-chart-equipos" style="min-height: 250px; height: 150px;"></canvas>
               </div>
             </div>
           </div>
@@ -133,7 +133,7 @@
                 </div>
               </div>
               <div class="card-body">
-              <canvas id="pie-chart-estados" style="min-height: 250px; height: 150px;"></canvas>
+                <canvas id="pie-chart-estados" style="min-height: 250px; height: 150px;"></canvas>
               </div>
             </div>
           </div>
@@ -166,45 +166,111 @@
         <!-- fin grafico de estado de prestamo jack -->
 
         <!--  grafico de prestamo por dia alonso -->
-        <!-- <div class="col-sm-6"></div> -->
-        <div class="col-12">
-          <div class="card">
-            <div class="card-header bg-dark">
-              <h3 class="card-title"><i class="fas fa-chart-line"></i> Préstamos Por Día</h3>
-              <div class="card-tools">
-                <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                  <i class="fas fa-minus"></i>
-                </button>
+
+        <div class="row col-12">
+          <div class="col-sm-6">
+
+            <div class="card">
+              <div class="card-header bg-dark">
+                <h3 class="card-title"><i class="fas fa-chart-line"></i> Préstamos Por Día</h3>
+                <div class="card-tools">
+                  <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                    <i class="fas fa-minus"></i>
+                  </button>
+                </div>
+              </div>
+
+              <?php
+              $prestamos = ControladorInicio::ctrObtenerPrestamosPorDia();
+              $dias = [];
+              $cantidades = [];
+
+              foreach ($prestamos as $registro) {
+                $dias[] = $registro['dia'];
+                $cantidades[] = $registro['cantidad'];
+              }
+
+              ?>
+
+              <div class="card-body">
+                <center>
+                  <button type="button" class="btn btn-sm btn-info" id="semana-actual">Semana Actual</button>
+                  <button type="button" class="btn btn-sm btn-secondary" id="semana-anterior">Semana Anterior</button>
+                </center>
+              </div>
+
+
+
+              <div class="card-body ">
+
+                <canvas id="line-chart-prestamos"
+                  style="min-height: 250px; height: 263px; background-color:rgba(88, 165, 216, 0.38);"></canvas>
               </div>
             </div>
-
-            <?php
-            $prestamos = ControladorInicio::ctrObtenerPrestamosPorDia();
-            $dias = [];
-            $cantidades = [];
-
-            foreach ($prestamos as $registro) {
-              $dias[] = $registro['dia'];
-              $cantidades[] = $registro['cantidad'];
-            }
-
-            ?>
-
-            <div class="card-body">
-              <center>
-                <button type="button" class="btn btn-sm btn-info" id="semana-actual">Semana Actual</button>
-                <button type="button" class="btn btn-sm btn-secondary" id="semana-anterior">Semana Anterior</button>
-              </center>
-            </div>
-
-            <div class="card-body">
-              <canvas id="line-chart-prestamos"
-                style="min-height: 250px; height: 150px; background-color:rgba(88, 165, 216, 0.38);"></canvas>
-            </div>
           </div>
+
+
+
+          <!-- fin grafico de prestamo por dia alonso -->
+
+          <!-- grafico de usuario por ficha franco -->
+          <div class="col-sm-6">
+
+            <div class="card">
+              <div class="card-header bg-dark">
+                <h3 class="card-title"><i class="fas fa-chart-bar"></i> Usuarios Por Ficha</h3>
+                <div class="card-tools">
+                  <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                    <i class="fas fa-minus"></i>
+                  </button>
+                </div>
+              </div>
+
+
+
+              <div class="card-body">
+                <div class="form-group">
+                  <center>
+                    <div class="row d-flex justify-content-center">
+                      <div class="col-lg-6">
+                        <div class="input-group">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-id-card"></i></span>
+                          </div>
+                          <input type="text" class="form-control" name="NumeroIdFicha" id="NumeroIdFicha"
+                            placeholder="Número de Fícha" required>
+                        </div>
+                      </div>
+
+                      <center>
+                        <div class="col-lg-6">
+                          <div class="input-group">
+                            <button class="btn btn-primary" id="btnBuscarFicha"><i class="fas fa-search"></i></button>
+                          </div>
+                        </div>
+                      </center>
+                    </div>
+                  </center>
+                </div>
+              </div>
+
+
+              <div class="card-body ">
+                <canvas id="graficoUsuarios" style="min-height: 250px; height: 150px; background-color:rgba(88, 165, 216, 0.38);"></canvas>
+
+              </div>
+
+
+
+              <!-- fin grafico de estado de prestamo alonso -->
+            </div>
+          </div><!-- /.row -->
         </div>
-        <!-- fin grafico de estado de prestamo alonso -->
-      </div><!-- /.row -->
+      </div>
+
+    </div>
+
+
 
   </section>
   <!-- /.content -->
@@ -246,7 +312,7 @@
             font: {
               size: 12
             },
-            generateLabels: function(chart) {
+            generateLabels: function (chart) {
               const data = chart.data;
               return data.labels.map((label, i) => {
                 const value = data.datasets[0].data[i];
@@ -263,7 +329,7 @@
         },
         tooltip: {
           callbacks: {
-            label: function(context) {
+            label: function (context) {
               const label = context.label || '';
               const value = context.raw || 0;
               const percentage = totalPrestamos > 0 ? Math.round((value / totalPrestamos) * 100) : 0;
@@ -282,12 +348,12 @@
 <script>
   //Gráfico de Estados de Equipos
   var totalEquipos = <?php echo array_sum($dataEquipos); ?>; // Calcula el total para porcentajes
- 
+
   console.log("Cantidad total de equipos es: ", totalEquipos);
-  
-  
+
+
   const pieChartEquipos = new Chart(document.getElementById('pie-chart-equipos'), {
-    
+
     type: 'pie',
     data: {
       labels: <?= json_encode($labelsEquipos) ?>,
@@ -317,7 +383,7 @@
             font: {
               size: 12
             },
-            generateLabels: function(chart) {
+            generateLabels: function (chart) {
               const data = chart.data;
               return data.labels.map((label, i) => {
                 const value = data.datasets[0].data[i];
@@ -334,7 +400,7 @@
         },
         tooltip: {
           callbacks: {
-            label: function(context) {
+            label: function (context) {
               const label = context.label || '';
               const value = context.raw || 0;
               const percentage = totalEquipos > 0 ? Math.round((value / totalEquipos) * 100) : 0;
@@ -345,13 +411,13 @@
       }
     }
   });
-  
 
-  
+
+
 
   document.querySelector('#leyenda-equipos').appendChild(
     generateLegendEquipos(pieChartEquipos)
   );
 
-  
+
 </script>
