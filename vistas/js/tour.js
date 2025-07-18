@@ -2,6 +2,7 @@ const driver = window.driver.js.driver;
 
 $(document).on("click", "#btnTour", function() {
     const driverObj = driver({
+        popoverClass: 'driverjs-theme',
         showProgress: true,
         // Textos personalizados en español
         nextBtnText: 'Siguiente -›',
@@ -14,7 +15,7 @@ $(document).on("click", "#btnTour", function() {
                 // Primer paso: Bienvenida general sin elemento
                 popover: {
                     title: '¡Hola, bienvenido a Hermes!',
-                    description: 'Te guiaremos a través de las funcionalidades principales de la plataforma.', // Puedes añadir una descripción aquí
+                    description: 'Te guiaremos a través de las funcionalidades principales de la plataforma. <br>Puedes usar las teclas flecha también(<- ->)', // Puedes añadir una descripción aquí
                     side: 'top',
                     align: 'center',
                     className: 'driverjs-custom-popover' 
@@ -25,7 +26,7 @@ $(document).on("click", "#btnTour", function() {
                 popover: {
                     title: 'Menú principal',
                     description: 'En esta sección podrás ver el menú principal de navegación de Hermes.',
-                    side: 'top',
+                    side: 'right',
                     align: 'center',
                     className: 'driverjs-custom-popover' 
                 }
@@ -35,7 +36,7 @@ $(document).on("click", "#btnTour", function() {
                 popover: {
                     title: 'Inicio',
                     description: 'Aquí podrás visualizar gráficas y estadísticas en general.',
-                    side: 'top',
+                    side: 'right',
                     align: 'center',
                     className: 'driverjs-custom-popover' 
                 }
@@ -45,7 +46,7 @@ $(document).on("click", "#btnTour", function() {
                 popover: {
                     title: 'Administración',
                     description: 'En esta sección se administran los permisos, usuarios, sedes, roles, etc.',
-                    side: 'top',
+                    side: 'right',
                     align: 'center',
                     className: 'driverjs-custom-popover' 
                 }
@@ -55,7 +56,7 @@ $(document).on("click", "#btnTour", function() {
                 popover: {
                     title: 'Usuarios',
                     description: 'Aquí se administran los usuarios de la plataforma de Hermes.',
-                    side: 'top',
+                    side: 'right',
                     align: 'center',
                     className: 'driverjs-custom-popover' 
                 }
@@ -65,7 +66,7 @@ $(document).on("click", "#btnTour", function() {
                 popover: {
                     title: 'Equipos',
                     description: 'En esta sección se administran los equipos de la plataforma de Hermes.',
-                    side: 'top',
+                    side: 'right',
                     align: 'center',
                     className: 'driverjs-custom-popover' 
                 }
@@ -75,7 +76,7 @@ $(document).on("click", "#btnTour", function() {
                 popover: {
                     title: 'Solicitudes',
                     description: 'Aquí podrás consultar las solicitudes de los usuarios.',
-                    side: 'top',
+                    side: 'right',
                     align: 'center',
                     className: 'driverjs-custom-popover' 
                 }
@@ -85,7 +86,7 @@ $(document).on("click", "#btnTour", function() {
                 popover: {
                     title: 'Autorizaciones',
                     description: 'En esta sección están los usuarios con autorización de los equipos pendientes por confirmar en trámite.',
-                    side: 'top',
+                    side: 'right',
                     align: 'center',
                     className: 'driverjs-custom-popover' 
                 }
@@ -95,7 +96,7 @@ $(document).on("click", "#btnTour", function() {
                 popover: {
                     title: 'Salidas',
                     description: 'En esta sección se consultan las salidas por autorizar de los equipos',
-                    side: 'top',
+                    side: 'right',
                     align: 'center',
                     className: 'driverjs-custom-popover' 
                 }
@@ -105,7 +106,7 @@ $(document).on("click", "#btnTour", function() {
                 popover: {
                     title: 'Devoluciones',
                     description: 'Los equipos en devolución se consultan en esta sección',
-                    side: 'top',
+                    side: 'right',
                     align: 'center',
                     className: 'driverjs-custom-popover' 
                 }
@@ -115,7 +116,7 @@ $(document).on("click", "#btnTour", function() {
                 popover: {
                     title: 'Mantenimiento',
                     description: 'Equipos que llegan de devoluciones, llegan a mantenimiento o cuando se solicita de uno',
-                    side: 'top',
+                    side: 'right',
                     align: 'center',
                     className: 'driverjs-custom-popover' 
                 }
@@ -124,7 +125,7 @@ $(document).on("click", "#btnTour", function() {
                 popover: {
                     title: 'Fin del tour!',
                     description: '¡Gracias por tu visita por este tour!',
-                    side: 'top',
+                    side: 'right',
                     align: 'center',
                     className: 'driverjs-custom-popover' 
                 }
