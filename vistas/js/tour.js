@@ -39,7 +39,96 @@ $(document).on("click", "#btnTour", function() {
                     align: 'center',
                     className: 'driverjs-custom-popover' 
                 }
-            }
+            },
+            {
+                element: '.tour-administar',
+                popover: {
+                    title: 'Administración',
+                    description: 'En esta sección se administran los permisos, usuarios, sedes, roles, etc.',
+                    side: 'top',
+                    align: 'center',
+                    className: 'driverjs-custom-popover' 
+                }
+            },
+            {
+                element: '.tour-usuarios',
+                popover: {
+                    title: 'Usuarios',
+                    description: 'Aquí se administran los usuarios de la plataforma de Hermes.',
+                    side: 'top',
+                    align: 'center',
+                    className: 'driverjs-custom-popover' 
+                }
+            },
+            {
+                element: '.tour-equipos',
+                popover: {
+                    title: 'Equipos',
+                    description: 'En esta sección se administran los equipos de la plataforma de Hermes.',
+                    side: 'top',
+                    align: 'center',
+                    className: 'driverjs-custom-popover' 
+                }
+            },
+            {
+                element: '.tour-solicitudes',
+                popover: {
+                    title: 'Solicitudes',
+                    description: 'Aquí podrás consultar las solicitudes de los usuarios.',
+                    side: 'top',
+                    align: 'center',
+                    className: 'driverjs-custom-popover' 
+                }
+            },
+            {
+                element: '.tour-autorizaciones',
+                popover: {
+                    title: 'Autorizaciones',
+                    description: 'En esta sección están los usuarios con autorización de los equipos pendientes por confirmar en trámite.',
+                    side: 'top',
+                    align: 'center',
+                    className: 'driverjs-custom-popover' 
+                }
+            },
+            {
+                element: '.tour-salidas',
+                popover: {
+                    title: 'Salidas',
+                    description: 'En esta sección se consultan las salidas por autorizar de los equipos',
+                    side: 'top',
+                    align: 'center',
+                    className: 'driverjs-custom-popover' 
+                }
+            },
+            {
+                element: '.tour-devoluciones',
+                popover: {
+                    title: 'Devoluciones',
+                    description: 'Los equipos en devolución se consultan en esta sección',
+                    side: 'top',
+                    align: 'center',
+                    className: 'driverjs-custom-popover' 
+                }
+            },
+            {
+                element: '.tour-mantenimiento',
+                popover: {
+                    title: 'Mantenimiento',
+                    description: 'Equipos que llegan de devoluciones, llegan a mantenimiento o cuando se solicita de uno',
+                    side: 'top',
+                    align: 'center',
+                    className: 'driverjs-custom-popover' 
+                }
+            },
+            {
+                popover: {
+                    title: 'Fin del tour!',
+                    description: '¡Gracias por tu visita por este tour!',
+                    side: 'top',
+                    align: 'center',
+                    className: 'driverjs-custom-popover' 
+                }
+            }              
         ]
     });
 
