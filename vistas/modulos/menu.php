@@ -68,7 +68,7 @@
 
 
 
-        echo '<li class="nav-item">
+        echo '<li class="nav-item tour-home">
             <a href="inicio" class="nav-link">
               <i class="nav-icon fas fa-home"></i>
               <p>

@@ -101,4 +101,17 @@ input[type="number"] {
     font-size: 24px;
 }
 
+/* Dentro de tu archivo CSS o en una etiqueta <style> en el HTML */
+
+/* Estilos para hacer el popover más grande */
+.driverjs-custom-popover .driver-popover {
+    max-width: 800px; /* Puedes ajustar este valor según tus necesidades */
+    width: 100%; /* Asegura que ocupe todo el ancho disponible hasta el max-width */
+}
+
+/* Opcional: si quieres aún más control o cambiar el color del texto del cabecero oscuro */
+.driverjs-custom-popover.driver-popover.driver-popover-dark .driver-popover-title {
+    color: #fff; /* Asegura que el título sea blanco en el tema oscuro */
+}
+
 

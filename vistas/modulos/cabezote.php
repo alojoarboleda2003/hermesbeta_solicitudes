@@ -18,6 +18,11 @@
 
   <!-- Right navbar links -->
   <ul class="navbar-nav ml-auto">
+    <li class="nav-item align-content-center">
+        <button id="btnTour" class="btn btn-sm btn-warning mr-2">
+          <i class="fas fa-map"> Dame un tour!</i>
+        </button>
+    </li>
     <!-- Home -->
     <li class="nav-item">
       <a class="nav-link" href="inicio" title="Home">
