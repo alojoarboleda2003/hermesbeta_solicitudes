@@ -34,15 +34,14 @@
                 //var_dump($trazabilidades);
                 foreach ($trazabilidades as $value) {
                   echo '<div class="time-label">
-                    <span class="bg-green">15 Jul. 2025</span>
+                    <span class="bg-green">'. substr($value["fecha_accion"], 2, 8) .'</span>
                     </div>
                     <div>
                     '. $value["icono"] .'
                     <div class="timeline-item">
-                      <span class="time"><i class="fas fa-clock"></i> 09:30</span>
-                      <h3 class="timeline-header"><a href="#">Sistema </a>' . $value["titulo"] .'</h3>'
+                      <span class="time"><i class="fas fa-clock"></i>'. substr($value["fecha_accion"], 11, 5) .'</span>
+                      <h3 class="timeline-header bg-dark rounded-top"><a href="#">Sistema: </a>' . $value["titulo"] .'</h3>'
                       .$value['descripcion'].'
-
                       <div class="timeline-footer">
                         <a class="btn btn-info btn-sm">Detalles técnicos</a>
                       </div>
@@ -51,88 +50,7 @@
                 }
                 
                 ?>
-
-              <!-- Evento 2: Asignación a técnico -->
-              <div>
-                <i class="fas fa-user-cog bg-orange"></i>
-                <div class="timeline-item">
-                  <span class="time"><i class="fas fa-clock"></i> 11:15</span>
-                  <h3 class="timeline-header"><a href="#">Laura Rodríguez</a> asignó equipo</h3>
-                  <div class="timeline-body">
-                    Asignado al técnico: <strong>Miguel Torres</strong><br>
-                    Prioridad: Alta<br>
-                    Tipo de mantenimiento: Preventivo
-                  </div>
-                </div>
-              </div>
-
-              <!-- Evento 3: Mantenimiento -->
-              <div class="time-label">
-                <span class="bg-purple">16 Jul. 2025</span>
-              </div>
-              <div>
-                <i class="fas fa-tools bg-yellow"></i>
-                <div class="timeline-item">
-                  <span class="time"><i class="fas fa-clock"></i> 14:20</span>
-                  <h3 class="timeline-header"><a href="#">Miguel Torres</a> realizó mantenimiento</h3>
-                  <div class="timeline-body">
-                    <strong>Actividades:</strong><br>
-                    - Actualización firmware<br>
-                    - Limpieza interna<br>
-                    - Reemplazo de ventiladores<br>
-                    <strong>Duración:</strong> 2 horas 15 minutos
-                  </div>
-                  <div class="timeline-footer">
-                    <a class="btn btn-primary btn-sm">Ver reporte</a>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Evento 4: Reubicación -->
-              <div>
-                <i class="fas fa-warehouse bg-teal"></i>
-                <div class="timeline-item">
-                  <span class="time"><i class="fas fa-clock"></i> 16:45</span>
-                  <h3 class="timeline-header"><a href="#">Sistema</a> reubicó equipo</h3>
-                  <div class="timeline-body">
-                    <strong>Nueva ubicación:</strong> Sala de Servidores B<br>
-                    <strong>Rack:</strong> B12-04<br>
-                    <strong>Responsable:</strong> Ana Gutiérrez
-                  </div>
-                </div>
-              </div>
-
-              <!-- Evento 5: Actualización de hardware -->
-              <div class="time-label">
-                <span class="bg-navy">17 Jul. 2025</span>
-              </div>
-              <div>
-                <i class="fas fa-microchip bg-red"></i>
-                <div class="timeline-item">
-                  <span class="time"><i class="fas fa-clock"></i> 10:00</span>
-                  <h3 class="timeline-header"><a href="#">Pedro Vargas</a> actualizó componentes</h3>
-                  <div class="timeline-body">
-                    <strong>Componentes instalados:</strong><br>
-                    - 2x Memoria DDR5 32GB<br>
-                    - SSD NVMe 1TB<br>
-                    <strong>Horas hombre:</strong> 1.5
-                  </div>
-                  <div class="timeline-footer">
-                    <a class="btn btn-warning btn-sm">Garantía</a>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Evento final -->
-              <div>
-                <i class="fas fa-flag-checkered bg-gray"></i>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
       <!-- /.timeline -->
-
     </section>
     <!-- /.content -->
   </div>
