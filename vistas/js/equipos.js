@@ -40,7 +40,7 @@ $('#tblEquipos').DataTable({
                     botones += "<button title='Traspaso de ubicación' class='btn btn-default btnTraspasarUbicacion' idEquipoTraspasoUbicacion='" + row[0] + "' data-toggle='modal' data-target='#modalTraspasoUbicacion'><i class='fas fa-map-pin'></i></button>";
                 }
 
-                botones += "<button title='Ver historial' class='btn btn-default btnHistorialEquipo' idEquipoHistorial='" + row[0] + "' data-toggle='modal' data-target='#modalHistorialEquipo'><i class='fas fa-clock'></i></button>" +
+                botones += "<button title='Ver historial' class='btn btn-default btnHistorialEquipo' idEquipoHistorial='" + row[0] + "'><i class='fas fa-clock'></i></button>" +
                     "</div>";
 
                 return botones;
@@ -382,4 +382,27 @@ $(document).on("submit", "#modalImportarEquipos form", function(e) {
             console.error("AJAX error: ", textStatus, errorThrown);
         }
     });
+});
+
+$(document).on("click", ".btnHistorialEquipo", function() {
+    let idEquipo = $(this).attr("idEquipoHistorial");
+    console.log("Id equipo: ", idEquipo);
+
+    if(!idEquipo){
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'No se ha seleccionado un equipo.',
+            confirmButtonColor: "#28a745"
+        });
+        return;
+    }
+
+    let redirectUrl = "historial-equipos?";
+    redirectUrl += "idEquipo=" + encodeURIComponent(idEquipo) + "&origin=inventario";
+    console.log("redirectUrl:" , redirectUrl);
+
+    window.location.href = redirectUrl;
+
+
 });
