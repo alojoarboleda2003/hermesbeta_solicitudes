@@ -1,15 +1,19 @@
+// documentacion: https://driverjs.com/docs/installation
+// Se solicita instanciar la clase de driver.js desde el objeto 'window'
 const driver = window.driver.js.driver;
 
 $(document).on("click", "#btnTour", function() {
     const driverObj = driver({
-        popoverClass: 'driverjs-theme',
-        showProgress: true,
+        // Se configura el driver.js con los parámetros deseados
+        popoverClass: 'driverjs-theme', //Aquí se configura la clase del popover
+        showProgress: true, //Aquí se configura si se muestra el progreso de los pasos
         // Textos personalizados en español
         nextBtnText: 'Siguiente -›',
         prevBtnText: '‹- Anterior',
-        doneBtnText: 'Ok',  
+        doneBtnText: 'Ok',
         progressText: 'Paso {{current}} de {{total}}', 
 
+        // Los pasos del tour
         steps: [
             {
                 // Primer paso: Bienvenida general sin elemento
@@ -22,7 +26,8 @@ $(document).on("click", "#btnTour", function() {
                 },
             },
             {
-                element: '.main-sidebar',
+                element: '.main-sidebar', // Elemento al que se dirigirá el paso (Se toma por .clase o por #id)
+                // Configuración del popover y mensajes a mostrar y en donde se mostrará
                 popover: {
                     title: 'Menú principal',
                     description: 'En esta sección podrás ver el menú principal de navegación de Hermes.',
