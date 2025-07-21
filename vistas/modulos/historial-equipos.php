@@ -29,9 +29,9 @@
               <?php
                 
                 $item = null; $valor = null;
-                $trazabilidades = ControladorTrazabilidadEquipos::ctrTrazabilidadAgregarEquipo($item, $valor);
-                // error_log(print_r($trazabilidades), true);
-                //var_dump($trazabilidades);
+                $trazabilidades = ControladorTrazabilidadEquipos::ctrMostrarTrazabilidadEquipos($item, $valor);
+                //error_log(print_r($trazabilidades, true));
+                var_dump($trazabilidades);
                 foreach ($trazabilidades as $value) {
                   echo '<div class="time-label">
                     <span class="bg-green">'. substr($value["fecha_accion"], 2, 8) .'</span>

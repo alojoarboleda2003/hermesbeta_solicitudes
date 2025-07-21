@@ -385,10 +385,10 @@ $(document).on("submit", "#modalImportarEquipos form", function(e) {
 });
 
 $(document).on("click", ".btnHistorialEquipo", function() {
-    let idEquipo = $(this).attr("idEquipoHistorial");
-    console.log("Id equipo: ", idEquipo);
+    let idEquipoTrazabilidad = $(this).attr("idEquipoHistorial");
+    console.log("Id equipo: ", idEquipoTrazabilidad);
 
-    if(!idEquipo){
+    if(!idEquipoTrazabilidad){
         Swal.fire({
             icon: 'error',
             title: 'Error',
@@ -398,11 +398,27 @@ $(document).on("click", ".btnHistorialEquipo", function() {
         return;
     }
 
+    let datos = new FormData();
+    datos.append("idEquipoTrazabilidad", idEquipoTrazabilidad);
+
+
+    $.ajax({
+        url: "ajax/trazabilidad.ajax.php",
+        method: "POST",
+        data: datos,
+        cache: false,
+        contentType: false,
+        processData: false,
+        dataType: "json",
+        success: function(respuesta) {
+            console.log("La respuesta del ajax es: ", respuesta);
+            $("#idEquipoHistorial").val(respuesta[0].id_equipo);
+        }
+    });
+
     let redirectUrl = "historial-equipos?";
-    redirectUrl += "idEquipo=" + encodeURIComponent(idEquipo) + "&origin=inventario";
+    redirectUrl += "idEquipo=" + encodeURIComponent(idEquipoTrazabilidad) + "&origin=inventario";
     console.log("redirectUrl:" , redirectUrl);
-
+    
     window.location.href = redirectUrl;
-
-
 });
