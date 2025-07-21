@@ -77,6 +77,7 @@ session_start();
   <script src="vistas/dist/js/adminlte.min.js"></script>
 
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  
 
   
 
@@ -142,6 +143,7 @@ session_start();
         $_GET["ruta"] == "desactivado" ||
         $_GET["ruta"] == "auditoria" ||
         $_GET["ruta"] == "notificaciones" ||
+        $_GET["ruta"] == "acerca-de" ||
         $_GET["ruta"] == "salir"
       ) {
 
