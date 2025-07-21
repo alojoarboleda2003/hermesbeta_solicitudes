@@ -14,25 +14,6 @@
         </div>
       </div>
 
-      <div class="card col-sm-6 text-white mt-2 rounded">
-        <div class="card-header bg-dark">
-          <h3 class="card-title mb-0">Búsqueda de equipo por número de serie</h3>
-        </div>
-        <div class="form-group col-lg-12 pt-3">
-          <div class="input-group mb-3">
-            <div class="input-group-prepend">
-              <span class="input-group-text bg-secondary border-secondary"><i class="fas fa-barcode text-white"></i></span>
-            </div>
-            <input type="text" class="form-control border-secondary" id="buscarNumSerie" name="buscarNumSerie" placeholder="Ej:12345...">
-            <div class="input-group-append">
-              <button class="btn btn-primary" type="button">
-                <i class="fas fa-search"></i>
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-
     </div><!-- /.container-fluid -->
   </section>
 
@@ -43,38 +24,81 @@
       <!-- Timelime example  -->
       <div class="row">
         <div class="col-md-12">
-          <div class="timeline">
-            <input type="hidden" id="idEquipo" name="idEquipo">
+          <div class="timeline" id="trazabilidadEquipo">
+          
+          </div>
+          <!-- Evento 1: Creación de equipo -->
+        </div>
+        <!-- /.timeline -->
+      </div>
 
-
-            <!-- Evento 1: Creación de equipo -->
-            <?php
-
-            $item = "equipo_id";
-            $valor = 1;
-            $trazabilidades = ControladorTrazabilidadEquipos::ctrMostrarTrazabilidadEquipos($item, $valor);
-            //error_log(print_r($trazabilidades, true));
-            // var_dump($trazabilidades);
-            foreach ($trazabilidades as $value) {
-              echo '<div class="time-label">
-                    <span class="bg-green">' . substr($value["fecha_accion"], 2, 8) . '</span>
-                    </div>
-                    <div>
-                    ' . $value["icono"] . '
-                    <div class="timeline-item">
-                      <span class="time"><i class="fas fa-clock"></i>' . substr($value["fecha_accion"], 11, 5) . '</span>
-                      <h3 class="timeline-header bg-dark rounded-top"><a href="#">Sistema: </a>' . $value["titulo"] . '</h3>'
-                . $value['descripcion'] . '
-                      <div class="timeline-footer">
-                        <a class="btn btn-info btn-sm">Detalles técnicos</a>
-                      </div>
-                    </div>
-                  </div>';
-            }
-
-            ?>
-            <!-- /.timeline -->
+    </div>
   </section>
   <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
+
+<script>
+  $(document).ready(function() {
+    // Obtener el ID del equipo desde la URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const idEquipo = urlParams.get('idEquipo');
+
+    if (!idEquipo) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'No se ha seleccionado un equipo para ver su historial.',
+            confirmButtonColor: "#28a745"
+        }); // Manejar error si no hay ID
+        return;
+    }
+
+    // Hacer la petición AJAX en la nueva página
+    const datos = new FormData();
+    datos.append("idEquipoTrazabilidad", idEquipo);
+
+    $.ajax({
+        url: "ajax/trazabilidad.ajax.php",
+        method: "POST",
+        data: datos,
+        cache: false,
+        contentType: false,
+        processData: false,
+        dataType: "json",
+        success: function(respuesta) {
+            const $trazabilidadEquipoDiv = $("#trazabilidadEquipo");
+            $trazabilidadEquipoDiv.empty(); // Limpiar contenedor
+            
+            respuesta.forEach(equipo => {
+                const trazabilidadEquipoHTML = `
+                <div class="time-label">
+                    <span class="bg-green">${equipo.fecha_accion.substring(2, 10)}</span>
+                </div>
+                <div>
+                    ${equipo.icono}
+                    <div class="timeline-item">
+                        <span class="time"><i class="fas fa-clock"></i> ${equipo.fecha_accion.substring(11, 16)}</span>
+                        <h3 class="timeline-header bg-dark rounded-top"><a href="#">Sistema: </a>${equipo.titulo}</h3>
+                        ${equipo.descripcion}
+                        <div class="timeline-footer">
+                            <a class="btn btn-info btn-sm">Detalles técnicos</a>
+                        </div>
+                    </div>
+                </div>`;
+                
+                $trazabilidadEquipoDiv.append(trazabilidadEquipoHTML);
+            });
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            console.error("Error en la petición AJAX:", textStatus, errorThrown);
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'No se ha podido obtener el historial del equipo.',
+                confirmButtonColor: "#28a745"
+            }); // Manejar error AJAX
+        }
+    });
+});
+</script>

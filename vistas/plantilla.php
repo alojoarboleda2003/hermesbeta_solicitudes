@@ -180,6 +180,7 @@ session_start();
   <script src="vistas/js/mantenimiento.js"></script>
   <script src="vistas/js/notificaciones.js"></script>
   <script src="vistas/js/inicio.js"></script>
+  <script src="vistas/js/trazabilidad.js"></script>
 
   <!-- JS para evitar FOUC (Flash of Unstyled Content) -->
   <script>
