@@ -81,9 +81,6 @@
                         <span class="time"><i class="fas fa-clock"></i> ${equipo.fecha_accion.substring(11, 16)}</span>
                         <h3 class="timeline-header bg-dark rounded-top"><a href="#">Sistema: </a>${equipo.titulo}</h3>
                         ${equipo.descripcion}
-                        <div class="timeline-footer">
-                            <a class="btn btn-info btn-sm">Detalles técnicos</a>
-                        </div>
                     </div>
                 </div>`;
                 
