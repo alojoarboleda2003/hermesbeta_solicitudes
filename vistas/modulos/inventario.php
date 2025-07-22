@@ -14,26 +14,32 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1>Inventario</h1>
-          </div>
-          <?php
-          if (ControladorValidacion::validarPermisoSesion([1])) {
-            echo '
-            <div class="col-sm-6">
-            <button class="btn btn-primary float-right" data-toggle="modal" data-target="#modalRegistrarEquipo">Agregar equipo</button>';
-          };
-          if (ControladorValidacion::validarPermisoSesion([6])) {
-            echo '
-            <button class="btn btn-success float-right ml-2" style="margin-right:10px;" data-toggle="modal" data-target="#modalImportarEquipos">
-              <i class="fas fa-upload"></i> Importar Equipos
-            </button>
-            </div>      
-            ';
-          }
-          ?>
+        <div class="col-sm-9">
+          <h1>Inventario</h1>
         </div>
+        <div class="row mb-3 d-flex justify-content-end">
+          <div class="col-sm-9 d-flex justify-content-end">
+            <div class="btn-group">
+              <button id="btnTourInventario" class="btn btn-info mr-2">
+                <i class="fas fa-map">Tour de Inventario</i>
+              </button>
+              <?php
+              if (ControladorValidacion::validarPermisoSesion([1])) {
+                echo '
+                <button class="btn btn-primary mr-2 tourAgregarEquipo" data-toggle="modal" data-target="#modalRegistrarEquipo">
+                  <i class="fas fa-plus"></i> Agregar equipo
+                </button>';
+              };
+              if (ControladorValidacion::validarPermisoSesion([6])) {
+                echo '
+                <button class="btn btn-success tourImportarEquipos" data-toggle="modal" data-target="#modalImportarEquipos">
+                  <i class="fas fa-upload"></i> Importar Equipos
+                </button>';
+              }
+              ?>
+            </div>
+          </div>
+      </div>
       </div><!-- /.container-fluid -->
     </section>
 

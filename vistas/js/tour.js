@@ -125,17 +125,119 @@ $(document).on("click", "#btnTour", function() {
                     align: 'center',
                     className: 'driverjs-custom-popover' 
                 }
-            },
-            {
-                popover: {
-                    title: 'Fin del tour!',
-                    description: '¡Gracias por tu visita por este tour!',
-                    side: 'right',
-                    align: 'center',
-                    className: 'driverjs-custom-popover' 
-                }
-            }              
+            }
         ]
+    });
+
+    driverObj.drive();
+});
+
+
+//   <!-- ========== Start Section ==========
+//   TODO: Tour de inventario
+//   ========== End Section ========== -->
+$(document).on("click", "#btnTourInventario", function() {
+    // * Construye los pasos dinámicamente.
+    let stepsInventario = [];
+
+    // Solo agregar los pasos si el usuario tiene los permisos necesarios
+    if (usuarioActual["permisos"].includes(1)) {
+        stepsInventario.push({
+            element: '.tourAgregarEquipo',
+            popover: {
+                title: 'Agregar un equipo',
+                description: 'Con este botón podrás agregar un equipo a la plataforma con su información. <br>Tales como su eqtiqueta, número de serie, descripción, categoría y su cuentadante',
+                side: 'top',
+                align: 'center',
+                className: 'driverjs-custom-popover' 
+            }
+        });
+    }
+
+    if(usuarioActual["permisos"].includes(6)){
+        stepsInventario.push({
+            element: '.tourImportarEquipos',
+            popover: {
+                title: 'Importar equipos por archivo Excel',
+                description: 'Con este botón podrás importar equipos a la plataforma desde un archivo Excel.',
+                side: 'top',
+                align: 'center',
+                className: 'driverjs-custom-popover' 
+            }
+        });
+    }
+
+    stepsInventario.push({
+        element: '.dt-buttons',
+        popover: {
+            title: 'Botones de exportación',
+            description: 'Con estos botones podrás exportar los datos de la tabla a un archivo Excel, CSV (archivo de texto plano separado por comas), PDF (formato de archivo de portabilidad).',
+            side: 'top',
+            align: 'center',
+            className: 'driverjs-custom-popover' 
+        }
+    });
+
+    if(usuarioActual["permisos"].includes(3)){
+        stepsInventario.push({
+            element: '.btnEditarEquipo',
+            popover: {
+                title: 'Botón de edición',
+                description: 'Con este botón podrás editar los datos de un equipo.',
+                side: 'top',
+                align: 'center',
+                className: 'driverjs-custom-popover' 
+            }
+        });
+    }
+
+    if(usuarioActual["permisos"].includes(5)){
+        stepsInventario.push({
+            element: '.btnTraspasarEquipo',
+            popover: {
+                title: 'Botón de traspaso de cuentadante',
+                description: 'Con este botón podrás traspasar un equipo a otra cuentadante autorizado.',
+                side: 'top',
+                align: 'center',
+                className: 'driverjs-custom-popover' 
+            }
+        });
+    }
+
+    if(usuarioActual["permisos"].includes(4)){
+        stepsInventario.push({
+            element: '.btnTraspasarUbicacion',
+            popover: {
+                title: 'Botón de traspaso de ubicación',
+                description: 'Con este botón podrás traspasar un equipo a otra ubicación.',
+                side: 'top',
+                align: 'center',
+                className: 'driverjs-custom-popover' 
+            }
+        });
+    }
+
+    stepsInventario.push({
+        element: '.btnHistorialEquipo',
+        popover: {
+            title: 'Botón de historial de equipo',
+            description: 'Con este botón podrás ver el historial de un equipo. Mostrando su trazabilidad a lo largo del tiempo; sus movimientos como cuando fue agregado, préstamos, mantenimiento, traspasos de ubicación o cuentadante, etc.',
+            side: 'top',
+            align: 'center',
+            className: 'driverjs-custom-popover' 
+        }
+    });
+
+    const driverObj = driver({
+        popoverClass: 'driverjs-theme',
+        showProgress: true,
+        nextBtnText: 'Siguiente -›',
+        prevBtnText: '‹- Anterior',
+        doneBtnText: 'Ok',
+        progressText: 'Paso {{current}} de {{total}}', 
+
+        // Los pasos del tour para el inventario
+        steps: stepsInventario
     });
 
     driverObj.drive();

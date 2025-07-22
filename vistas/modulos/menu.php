@@ -157,7 +157,7 @@
         
         if (ControladorValidacion::validarPermisoSesion([1])) {
           echo '
-            <li class="nav-item">
+            <li class="nav-item tour-equipos">
               <a href="inventario" class="nav-link">
                 <i class="nav-icon fas fa-laptop"></i>
                 <p>Inventario</p>
@@ -165,7 +165,7 @@
             </li>';
         }
 
-        echo '<li class="nav-item">
+        echo '<li class="nav-item tour-solicitudes">
                 <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-file-alt"></i>
                 <p>
