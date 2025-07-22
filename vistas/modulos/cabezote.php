@@ -5,8 +5,11 @@
     <li class="nav-item">
       <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
     </li>
-    <li class="nav-item d-none d-sm-inline-block">
-      <a href="acerca-de" class="nav-link">Acerca de</a>
+    <li class="nav-item">
+      <a href="acerca-de" class="nav-link" title="Acerca de">
+        <span class="d-none d-sm-inline">Acerca de</span>
+        <i class="fas fa-info-circle d-sm-none"></i>
+      </a>
     </li>
     <li>
       <pre><?php
