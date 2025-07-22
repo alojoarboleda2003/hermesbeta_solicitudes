@@ -1,148 +1,18 @@
-// documentacion: https://driverjs.com/docs/installation
-// Se solicita instanciar la clase de driver.js desde el objeto 'window'
+// TODO: documentacion: https://driverjs.com/docs/installation
+// * Se solicita instanciar la clase de driver.js desde el objeto 'window'
 const driver = window.driver.js.driver;
 
-$(document).on("click", "#btnTour", function() {
-    const driverObj = driver({
-        // Se configura el driver.js con los parámetros deseados
-        popoverClass: 'driverjs-theme', //Aquí se configura la clase del popover
-        showProgress: true, //Aquí se configura si se muestra el progreso de los pasos
-        // Textos personalizados en español
-        nextBtnText: 'Siguiente -›',
-        prevBtnText: '‹- Anterior',
-        doneBtnText: 'Ok',
-        progressText: 'Paso {{current}} de {{total}}', 
-
-        // Los pasos del tour
-        steps: [
-            {
-                // Primer paso: Bienvenida general sin elemento
-                popover: {
-                    title: '¡Hola, bienvenido a Hermes!',
-                    description: 'Te guiaremos a través de las funcionalidades principales de la plataforma. <br>Puedes usar las teclas flecha también(<- ->)', // Puedes añadir una descripción aquí
-                    side: 'top',
-                    align: 'center',
-                    className: 'driverjs-custom-popover' 
-                },
-            },
-            {
-                element: '.main-sidebar', // Elemento al que se dirigirá el paso (Se toma por .clase o por #id)
-                // Configuración del popover y mensajes a mostrar y en donde se mostrará
-                popover: {
-                    title: 'Menú principal',
-                    description: 'En esta sección podrás ver el menú principal de navegación de Hermes.',
-                    side: 'right',
-                    align: 'center',
-                    className: 'driverjs-custom-popover' 
-                }
-            },
-            {
-                element: '.tour-home',
-                popover: {
-                    title: 'Inicio',
-                    description: 'Aquí podrás visualizar gráficas y estadísticas en general.',
-                    side: 'right',
-                    align: 'center',
-                    className: 'driverjs-custom-popover' 
-                }
-            },
-            {
-                element: '.tour-administar',
-                popover: {
-                    title: 'Administración',
-                    description: 'En esta sección se administran los permisos, usuarios, sedes, roles, etc.',
-                    side: 'right',
-                    align: 'center',
-                    className: 'driverjs-custom-popover' 
-                }
-            },
-            {
-                element: '.tour-usuarios',
-                popover: {
-                    title: 'Usuarios',
-                    description: 'Aquí se administran los usuarios de la plataforma de Hermes.',
-                    side: 'right',
-                    align: 'center',
-                    className: 'driverjs-custom-popover' 
-                }
-            },
-            {
-                element: '.tour-equipos',
-                popover: {
-                    title: 'Equipos',
-                    description: 'En esta sección se administran los equipos de la plataforma de Hermes.',
-                    side: 'right',
-                    align: 'center',
-                    className: 'driverjs-custom-popover' 
-                }
-            },
-            {
-                element: '.tour-solicitudes',
-                popover: {
-                    title: 'Solicitudes',
-                    description: 'Aquí podrás consultar las solicitudes de los usuarios.',
-                    side: 'right',
-                    align: 'center',
-                    className: 'driverjs-custom-popover' 
-                }
-            },
-            {
-                element: '.tour-autorizaciones',
-                popover: {
-                    title: 'Autorizaciones',
-                    description: 'En esta sección están los usuarios con autorización de los equipos pendientes por confirmar en trámite.',
-                    side: 'right',
-                    align: 'center',
-                    className: 'driverjs-custom-popover' 
-                }
-            },
-            {
-                element: '.tour-salidas',
-                popover: {
-                    title: 'Salidas',
-                    description: 'En esta sección se consultan las salidas por autorizar de los equipos',
-                    side: 'right',
-                    align: 'center',
-                    className: 'driverjs-custom-popover' 
-                }
-            },
-            {
-                element: '.tour-devoluciones',
-                popover: {
-                    title: 'Devoluciones',
-                    description: 'Los equipos en devolución se consultan en esta sección',
-                    side: 'right',
-                    align: 'center',
-                    className: 'driverjs-custom-popover' 
-                }
-            },
-            {
-                element: '.tour-mantenimiento',
-                popover: {
-                    title: 'Mantenimiento',
-                    description: 'Equipos que llegan de devoluciones, llegan a mantenimiento o cuando se solicita de uno',
-                    side: 'right',
-                    align: 'center',
-                    className: 'driverjs-custom-popover' 
-                }
-            }
-        ]
-    });
-
-    driverObj.drive();
-});
-
-
+// * (RECOMENDACIÓN: INSTALAR LA EXTENSIÓN BETTER COMMENTS PARA MEJOR VISUALIZACIÓN DE LOS COMENTARIOS)
 //   <!-- ========== Start Section ==========
-//   TODO: Tour de inventario
+//   TODO: Tour de inventario 
 //   ========== End Section ========== -->
-$(document).on("click", "#btnTourInventario", function() {
-    // * Construye los pasos dinámicamente.
+$(document).on("click", "#btnTourInventario", () => {
+    // * Construye los pasos dinámicamente, es decir, steps(atributo del driverjs) recorrerá cada posición del array dinámico que creamos. En este caso stepsInventario.
     let stepsInventario = [];
 
-    // Solo agregar los pasos si el usuario tiene los permisos necesarios
-    if (usuarioActual["permisos"].includes(1)) {
-        stepsInventario.push({
+    // Solo agregar los pasos si el usuario tiene los permisos necesarios o no.
+    if (usuarioActual["permisos"].includes(1)) { // * Si el usuario tiene el permiso 1 (agregar equipo), agregará este paso al tour
+        stepsInventario.push({ // * Al array de stepsInventario agregarle este paso
             element: '.tourAgregarEquipo',
             popover: {
                 title: 'Agregar un equipo',
@@ -242,3 +112,201 @@ $(document).on("click", "#btnTourInventario", function() {
 
     driverObj.drive();
 });
+
+//   <!-- ========== Start Section ==========
+//   TODO: Tour de inicio
+//   ========== End Section ========== -->
+
+$(document).on("click", "#btnTourInicio", () => {
+    const stepsInicio = [];
+
+    stepsInicio.push({
+        popover: {
+            title: '¡Bienvenido a Hermes!',
+            description: 'Te guiaremos a través de las funcionalidades principales de la plataforma. <br>Puedes usar las teclas flecha también para avanzar o retroceder en los pasos del tour. (<- ->)',
+            side: 'top',
+            align: 'center',
+            className: 'driverjs-custom-popover' 
+        }
+    });
+
+    stepsInicio.push({
+        element: '.tour-home',
+        popover: {
+            title: 'Inicio',
+            description: 'Aquí podrás visualizar gráficas y estadísticas en general.',
+            side: 'right',
+            align: 'center',
+            className: 'driverjs-custom-popover'
+        }
+    });
+
+    stepsInicio.push({
+        element: '.tour-administar',
+        popover: {
+            title: 'Administración',
+            description: 'En esta sección se administran los permisos, usuarios, sedes, roles, etc.',
+            side: 'right',
+            align: 'center',
+            className: 'driverjs-custom-popover'
+        }
+    });
+
+    stepsInicio.push({
+        element: '.tour-usuarios',
+        popover: {
+            title: 'Usuarios',
+            description: 'Aquí se administran los usuarios de la plataforma de Hermes.',
+            side: 'right',
+            align: 'center',
+            className: 'driverjs-custom-popover'
+        }
+    });
+
+    stepsInicio.push({
+        element: '.tour-equipos',
+        popover: {
+            title: 'Equipos',
+            description: 'En esta sección se administran los equipos de la plataforma de Hermes.',
+            side: 'right',
+            align: 'center',
+            className: 'driverjs-custom-popover'
+        }
+    });
+
+    stepsInicio.push({
+        element: '.tour-solicitudes',
+        popover: {
+            title: 'Solicitudes',
+            description: 'Aquí podrás consultar las solicitudes de los usuarios.',
+            side: 'right',
+            align: 'center',
+            className: 'driverjs-custom-popover'
+        }
+    });
+
+    stepsInicio.push({
+        element: '.tour-autorizaciones',
+        popover: {
+            title: 'Autorizaciones',
+            description: 'En esta sección están los usuarios con autorización de los equipos pendientes por confirmar en trámite.',
+            side: 'right',
+            align: 'center',
+            className: 'driverjs-custom-popover'
+        }
+    });
+
+    stepsInicio.push({
+        element: '.tour-salidas',
+        popover: {
+            title: 'Salidas',
+            description: 'En esta sección se consultan las salidas por autorizar de los equipos',
+            side: 'right',
+            align: 'center',
+            className: 'driverjs-custom-popover'
+        }
+    });
+
+    stepsInicio.push({
+        element: '.tour-devoluciones',
+        popover: {
+            title: 'Devoluciones',
+            description: 'Los equipos en devolución se consultan en esta sección',
+            side: 'right',
+            align: 'center',
+            className: 'driverjs-custom-popover'
+        }
+    });
+
+    stepsInicio.push({
+        element: '.tour-mantenimiento',
+        popover: {
+            title: 'Mantenimiento',
+            description: 'Equipos que llegan de devoluciones, llegan a mantenimiento o cuando se solicita de uno',
+            side: 'right',
+            align: 'center',
+            className: 'driverjs-custom-popover'
+        }
+    });
+
+    stepsInicio.push({
+        popover: {
+            title: 'Inicio',
+            description: 'En la sección de inicio podrás ver un resumen de la información de la plataforma representada en gráficas.',
+            side: 'top',
+            align: 'center',
+            className: 'driverjs-custom-popover' 
+        }
+    });
+
+    stepsInicio.push({
+        element: '.estadisticasTour',
+        popover: {
+            title: 'Estadísticas',
+            description: 'En la sección de estadísticas podrás ver un resumen de la información de la plataforma<br>Visualizando la cantidad de <strong>Equipos</strong>, <strong>Sonido</strong>, <strong>Videobeam</strong> y <strong>Controles</strong>.',
+            side: 'top',
+            align: 'center',
+            className: 'driverjs-custom-popover' 
+        }
+    });
+
+    stepsInicio.push({
+        element: '.estadosEquiposTour',
+        popover: {
+            title: 'Gráficas de equipos por<br> estado',
+            description: 'En la sección de gráficas de equipos por estado podrás ver un resumen de la información de los equipos',
+            side: 'top',
+            align: 'center',
+            className: 'driverjs-custom-popover' 
+        }
+    });
+
+    stepsInicio.push({
+        element: '.estadosPrestamosTour',
+        popover: {
+            title: 'Gráficas de préstamos por<br> estado',
+            description: 'En la sección de gráficas de préstamos por estado podrás ver un resumen de la información de los préstamos',
+            side: 'top',
+            align: 'center',
+            className: 'driverjs-custom-popover' 
+        }
+    });
+
+    stepsInicio.push({
+        element: '.prestamosPorDiaTour',
+        popover: {
+            title: 'Gráficas de préstamos por<br>día',
+            description: 'Diariamente se prestan equipos. En este gráfico podrás visualizar la cantidad de equipos prestados por día, incluyendo la cantidad de equipos prestados de esta semana y la semana pasada.',
+            side: 'top',
+            align: 'center',
+            className: 'driverjs-custom-popover' 
+        }
+    });
+
+    stepsInicio.push({
+        element: '.usuariosPorFichaTour',
+        popover: {
+            title: 'Gráficas de usuarios por<br> ficha',
+            description: 'Aquí podrás visualizar la cantidad de aprendices por ficha.<br>También podrás hacer un filtro de aprendices por género.',
+            side: 'top',
+            align: 'center',
+            className: 'driverjs-custom-popover' 
+        }
+    });
+
+
+    const driverObj = driver({
+        popoverClass: 'driverjs-theme',
+        showProgress: true,
+        nextBtnText: 'Siguiente -›',
+        prevBtnText: '‹- Anterior',
+        doneBtnText: 'Ok',
+        progressText: 'Paso {{current}} de {{total}}', 
+
+        // Los pasos del tour para el inventario
+        steps: stepsInicio
+    });
+
+    driverObj.drive();
+
+})
