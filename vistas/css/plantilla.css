@@ -205,4 +205,10 @@ input[type="checkbox"].custom-disabled:checked::after {
     border-bottom-color: #9b9b9b;
 }
 
+@media screen and (max-width: 768px) {
+    .tourButton {
+        display: none;
+    }
+}
+
 

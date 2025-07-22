@@ -20,8 +20,8 @@
         <div class="row mb-3 d-flex justify-content-end">
           <div class="col-sm-9 d-flex justify-content-end">
             <div class="btn-group">
-              <button id="btnTourInventario" class="btn btn-info mr-2">
-                <i class="fas fa-map">Tour de Inventario</i>
+              <button id="btnTourInventario" class="btn btn-info mr-2 tourButton">
+                <i class="fas fa-map"> Tour de Inventario</i>
               </button>
               <?php
               if (ControladorValidacion::validarPermisoSesion([1])) {
