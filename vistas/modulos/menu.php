@@ -160,7 +160,7 @@
             <li class="nav-item">
               <a href="inventario" class="nav-link">
                 <i class="nav-icon fas fa-laptop"></i>
-                <p>Inventario Equipos</p>
+                <p>Inventario</p>
               </a>
             </li>';
         }
