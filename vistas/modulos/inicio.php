@@ -4,10 +4,10 @@
   <section class="content-header">
     <div class="container-fluid">
       <div class="row mb-2">
-        <div class="col-sm-12 d-flex justify-content-between mb-3 align-content-center">
+        <div class="col-sm-12 d-flex justify-content-start mb-3 align-content-center">
           <h1>Inicio</h1>
-          <button id="btnTourInicio" class="btn btn-info mr-2 tourButton">
-            <i class="fas fa-map"> Tour de Inicio</i>
+          <button id="btnTourInicio" title="Haz click aquí para un tour de inicio!" class="btn btn-default ml-2 mr-2 tourButton">
+            <i class="fas fa-map"></i>
           </button>
         </div>
         <!-- Contenedor para los contenedores -->
