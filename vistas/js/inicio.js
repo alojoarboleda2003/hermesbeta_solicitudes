@@ -149,13 +149,13 @@ document.getElementById('btnBuscarFicha').click(); // simula clic para cargar el
   // Fin de grafica
 
 // Obtenniendo los datos de los equipos
-var datos = FormData();
-datos.append("datosGrafica", datosGraficas);
+var datosGraficas = new FormData(); //No se estaba instanciando bien con el new
+datosGraficas.append("datosGrafica", datosGraficas);
 
 $.ajax({
   url: "ajax/inicio.ajax.php",
   method: "POST",
-  data: datos,
+  data: datosGraficas,
   cache: false,
   contentType: false,
   processData: false,

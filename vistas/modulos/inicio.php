@@ -4,76 +4,82 @@
   <section class="content-header">
     <div class="container-fluid">
       <div class="row mb-2">
-        <div class="col-sm-12">
+        <div class="col-sm-12 d-flex justify-content-between mb-3 align-content-center">
           <h1>Inicio</h1>
+          <button id="btnTourInicio" class="btn btn-info mr-2 tourButton">
+            <i class="fas fa-map"> Tour de Inicio</i>
+          </button>
         </div>
-        <div class="col-lg-3 col-12">
-          <!-- small box -->
-          <?php
-          $conteos = ControladorSolicitudes::ctrContarEquiposPorCategoria();
-          $conteos2 = ControladorSolicitudes::ctrContarEquiposPorReserva();
+        <!-- Contenedor para los contenedores -->
+        <div class="container-fluid d-flex flex-row flex-wrap justify-content-between estadisticasTour">
+          <div class="col-lg-3 col-12">
+            <!-- small box -->
+            <?php
+            $conteos = ControladorSolicitudes::ctrContarEquiposPorCategoria();
+            $conteos2 = ControladorSolicitudes::ctrContarEquiposPorReserva();
 
-          ?>
-          <div class="small-box bg-info">
-            <div class="inner">
-              <h3>Portátiles</h3>
-              <p><strong>Disponibles:</strong> <?php echo isset($conteos[1]) ? $conteos[1] : 0; ?><br>
-                <strong>Reservados:</strong> <?php echo isset($conteos2[1]) ? $conteos2[1] : 0; ?>
-              </p>
+            ?>
+            <div class="small-box bg-info">
+              <div class="inner">
+                <h3>Portátiles</h3>
+                <p><strong>Disponibles:</strong> <?php echo isset($conteos[1]) ? $conteos[1] : 0; ?><br>
+                  <strong>Reservados:</strong> <?php echo isset($conteos2[1]) ? $conteos2[1] : 0; ?>
+                </p>
+
+              </div>
+              <div class="icon">
+                <i class="fas fa-desktop"></i>
+              </div>
 
             </div>
-            <div class="icon">
-              <i class="fas fa-desktop"></i>
-            </div>
-
           </div>
-        </div>
 
-        <div class="col-lg-3 col-12">
-          <!-- small box -->
-          <div class="small-box bg-info">
-            <div class="inner">
-              <h3>Sonido</h3>
-              <p><strong>Disponibles:</strong> <?php echo isset($conteos[3]) ? $conteos[3] : 0; ?><br>
-                <strong>Reservados:</strong> <?php echo isset($conteos2[3]) ? $conteos2[3] : 0; ?>
-              </p>
-            </div>
-            <div class="icon">
-              <i class="fas fa-volume-up"></i>
-            </div>
+          <div class="col-lg-3 col-12">
+            <!-- small box -->
+            <div class="small-box bg-info">
+              <div class="inner">
+                <h3>Sonido</h3>
+                <p><strong>Disponibles:</strong> <?php echo isset($conteos[3]) ? $conteos[3] : 0; ?><br>
+                  <strong>Reservados:</strong> <?php echo isset($conteos2[3]) ? $conteos2[3] : 0; ?>
+                </p>
+              </div>
+              <div class="icon">
+                <i class="fas fa-volume-up"></i>
+              </div>
 
+            </div>
           </div>
-        </div>
 
-        <div class="col-lg-3 col-12">
-          <!-- small box -->
-          <div class="small-box bg-info">
-            <div class="inner">
-              <h3>Videobeam</h3>
-              <p><strong>Disponibles:</strong> <?php echo isset($conteos[2]) ? $conteos[2] : 0; ?><br>
-                <strong>Reservados:</strong> <?php echo isset($conteos2[2]) ? $conteos2[2] : 0; ?>
-              </p>
-            </div>
-            <div class="icon">
-              <i class="fas fa-video"></i>
-            </div>
+          <div class="col-lg-3 col-12">
+            <!-- small box -->
+            <div class="small-box bg-info">
+              <div class="inner">
+                <h3>Videobeam</h3>
+                <p><strong>Disponibles:</strong> <?php echo isset($conteos[2]) ? $conteos[2] : 0; ?><br>
+                  <strong>Reservados:</strong> <?php echo isset($conteos2[2]) ? $conteos2[2] : 0; ?>
+                </p>
+              </div>
+              <div class="icon">
+                <i class="fas fa-video"></i>
+              </div>
 
+            </div>
           </div>
-        </div>
 
-        <div class="col-lg-3 col-12 ">
-          <!-- small box -->
-          <div class="small-box bg-info">
-            <div class="inner">
-              <h3>Control remoto</h3>
-              <p><strong>Disponibles:</strong> <?php echo isset($conteos[5]) ? $conteos[5] : 0; ?><br>
-                <strong>Reservados:</strong> <?php echo isset($conteos2[5]) ? $conteos2[5] : 0; ?>
-              </p>
-            </div>
-            <div class="icon">
-              <i class="fas fa-gamepad"></i>
-            </div>
+          <div class="col-lg-3 col-12 ">
+            <!-- small box -->
+            <div class="small-box bg-info">
+              <div class="inner">
+                <h3>Control remoto</h3>
+                <p><strong>Disponibles:</strong> <?php echo isset($conteos[5]) ? $conteos[5] : 0; ?><br>
+                  <strong>Reservados:</strong> <?php echo isset($conteos2[5]) ? $conteos2[5] : 0; ?>
+                </p>
+              </div>
+              <div class="icon">
+                <i class="fas fa-gamepad"></i>
+              </div>
 
+            </div>
           </div>
         </div>
 
@@ -81,7 +87,7 @@
         <div class="row col-12">
           <!-- Tarjeta para Estados de Equipos -->
           <div class="col-lg-6 col-md-12">
-            <div class="card">
+            <div class="card estadosEquiposTour">
               <div class="card-header bg-dark">
                 <h3 class="card-title"><i class="fas fa-chart-pie"></i> Estados de equipos</h3>
                 <div class="card-tools">
@@ -123,7 +129,7 @@
 
           <!-- Tarjeta para Estados de Préstamos -->
           <div class="col-lg-6 col-md-12">
-            <div class="card">
+            <div class="card estadosPrestamosTour">
               <div class="card-header bg-dark">
                 <h3 class="card-title"><i class="fas fa-chart-pie"></i> Estados de préstamos</h3>
                 <div class="card-tools">
@@ -170,8 +176,8 @@
         <div class="row col-12">
           <div class="col-sm-6">
 
-            <div class="card">
-              <div class="card-header bg-dark">
+            <div class="card prestamosPorDiaTour">
+              <div class="card-header bg-dark ">
                 <h3 class="card-title"><i class="fas fa-chart-line"></i> Préstamos Por Día</h3>
                 <div class="card-tools">
                   <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -222,8 +228,8 @@
           <!-- grafico de usuario por ficha franco -->
           <div class="col-sm-6">
 
-            <div class="card">
-              <div class="card-header bg-dark">
+            <div class="card usuariosPorFichaTour">
+              <div class="card-header bg-dark ">
                 <h3 class="card-title"><i class="fas fa-chart-bar"></i> Usuarios Por Ficha</h3>
                 <div class="card-tools">
                   <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -286,7 +292,7 @@
 <!--// TODO: Script de estados de los préstamos -->
 <script>
   // Gráfica de Pie (Estados de Préstamos) - MODIFICADA CON COLORES Y PORCENTAJES
-  const ctxPie = document.getElementById('pie-chart-estados').getContext('2d');
+  const ctxPie = document.getElementById('pie-chart-estados'); //Se removió el getContext("2d");
   const totalPrestamos = <?php echo array_sum($data); ?>; // Calcula el total para porcentajes
 
   new Chart(ctxPie, {
