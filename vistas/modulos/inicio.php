@@ -292,7 +292,7 @@
 <!--// TODO: Script de estados de los préstamos -->
 <script>
   // Gráfica de Pie (Estados de Préstamos) - MODIFICADA CON COLORES Y PORCENTAJES
-  const ctxPie = document.getElementById('pie-chart-estados').getContext('2d');
+  const ctxPie = document.getElementById('pie-chart-estados'); //Se removió el getContext("2d");
   const totalPrestamos = <?php echo array_sum($data); ?>; // Calcula el total para porcentajes
 
   new Chart(ctxPie, {
