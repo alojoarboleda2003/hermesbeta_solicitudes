@@ -98,6 +98,21 @@ $(document).on("click", "#btnTourInventario", () => {
         }
     });
 
+
+    stepsInventario.push({
+        popover: {
+            title: 'Ya sabes como manejar el inventario<br>Felicidades!',
+            description: '<div class="text-center"><img src="vistas/img/Logo/android-chrome-192x192.png" alt="gif fin tour" class="img-fluid"></div>',
+            side: 'top',
+            align: 'center',
+            className: 'driverjs-custom-popover' 
+        }
+    });
+
+
+
+
+
     const driverObj = driver({
         popoverClass: 'driverjs-theme',
         showProgress: true,
@@ -313,7 +328,7 @@ $(document).on("click", "#btnTourInicio", () => {
     stepsInicio.push({
         popover: {
             title: 'Gracias por tomar el tour de Hermes!',
-            description: '<div class="text-center"><img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExazM2eDAxZjl4d3Y3M2xoNmE0czNqdGQ3c2EwaW5zdDd6dmZld3JuNyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/vmon3eAOp1WfK/giphy.gif" alt="gif fin tour" class="img-fluid"></div>',
+            description: '<div class="text-center"><img src="vistas/img/Logo/android-chrome-192x192.png" alt="gif fin tour" class="img-fluid"></div>',
             side: 'top',
             align: 'center',
             className: 'driverjs-custom-popover' 

@@ -15,14 +15,16 @@
     <section class="content-header">
       <div class="container-fluid">
         <div class="col-sm-9">
-          <h1>Inventario</h1>
+          <div class="col-sm-12 d-flex justify-content-start mb-3 align-content-center">
+            <h1>Inventario</h1>
+            <button id="btnTourInventario" title="Haz click aquí para un tour de inventario!" class="btn btn-default ml-2 mr-2 tourButton">
+              <i class="fas fa-map"></i>
+            </button>
+          </div>
         </div>
         <div class="row mb-3 d-flex justify-content-end">
           <div class="col-sm-9 d-flex justify-content-end">
             <div class="btn-group">
-              <button id="btnTourInventario" class="btn btn-info mr-2 tourButton">
-                <i class="fas fa-map"> Tour de Inventario</i>
-              </button>
               <?php
               if (ControladorValidacion::validarPermisoSesion([1])) {
                 echo '
