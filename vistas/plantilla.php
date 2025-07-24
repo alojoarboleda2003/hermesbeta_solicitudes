@@ -112,7 +112,6 @@ session_start();
     echo '<script>
         const usuarioActual = {
             id: ' . $_SESSION['id_usuario'] . ',
-            cedula: ' . $_SESSION['numero_documento'] . ',
             permisos: ' . json_encode($_SESSION['permisos']) . '  
         }
     </script>';
@@ -138,7 +137,7 @@ session_start();
         $_GET["ruta"] == "autorizaciones" ||
         $_GET["ruta"] == "devoluciones" ||
         $_GET["ruta"] == "salidas" ||
-        $_GET["ruta"] == "reportes" ||
+        $_GET["ruta"] == "historial-equipos" ||
         $_GET["ruta"] == "Mantenimiento" ||
         $_GET["ruta"] == "reporte-equipos" ||
         $_GET["ruta"] == "desactivado" ||
@@ -181,6 +180,7 @@ session_start();
   <script src="vistas/js/mantenimiento.js"></script>
   <script src="vistas/js/notificaciones.js"></script>
   <script src="vistas/js/inicio.js"></script>
+  <script src="vistas/js/trazabilidad.js"></script>
 
   <!-- JS para evitar FOUC (Flash of Unstyled Content) -->
   <script>

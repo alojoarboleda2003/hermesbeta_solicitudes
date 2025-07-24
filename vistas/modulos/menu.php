@@ -154,31 +154,16 @@
                 </a>
               </li>';
         }
+        
         if (ControladorValidacion::validarPermisoSesion([1])) {
           echo '
             <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-laptop"></i>
-              <p>Equipos
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="inventario" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Inventario</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="reporte-equipos" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Reportes</p>
-                </a>
-              </li>
-            </ul>';
+              <a href="inventario" class="nav-link">
+                <i class="nav-icon fas fa-laptop"></i>
+                <p>Inventario</p>
+              </a>
+            </li>';
         }
-
 
         echo '<li class="nav-item">
                 <a href="#" class="nav-link">
