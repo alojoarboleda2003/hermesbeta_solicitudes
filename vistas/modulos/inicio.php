@@ -7,78 +7,79 @@
         <div class="col-sm-12">
           <h1>Inicio</h1>
         </div>
-        <div class="col-lg-3 col-12">
-          <!-- small box -->
-          <?php
-          $conteos = ControladorSolicitudes::ctrContarEquiposPorCategoria();
-          $conteos2 = ControladorSolicitudes::ctrContarEquiposPorReserva();
+        <div class="row">
+          <div class="col-lg-3 col-12">
+            <!-- small box -->
+            <?php
+            $conteos = ControladorSolicitudes::ctrContarEquiposPorCategoria();
+            $conteos2 = ControladorSolicitudes::ctrContarEquiposPorReserva();
 
-          ?>
-          <div class="small-box bg-info">
-            <div class="inner">
-              <h3>Portátiles</h3>
-              <p><strong>Disponibles:</strong> <?php echo isset($conteos[1]) ? $conteos[1] : 0; ?><br>
-                <strong>Reservados:</strong> <?php echo isset($conteos2[1]) ? $conteos2[1] : 0; ?>
-              </p>
+            ?>
+            <div class="small-box bg-info">
+              <div class="inner">
+                <h3>Portátiles</h3>
+                <p><strong>Disponibles:</strong> <?php echo isset($conteos[1]) ? $conteos[1] : 0; ?><br>
+                  <strong>Reservados:</strong> <?php echo isset($conteos2[1]) ? $conteos2[1] : 0; ?>
+                </p>
+
+              </div>
+              <div class="icon">
+                <i class="fas fa-desktop"></i>
+              </div>
 
             </div>
-            <div class="icon">
-              <i class="fas fa-desktop"></i>
-            </div>
-
           </div>
-        </div>
 
-        <div class="col-lg-3 col-12">
-          <!-- small box -->
-          <div class="small-box bg-info">
-            <div class="inner">
-              <h3>Sonido</h3>
-              <p><strong>Disponibles:</strong> <?php echo isset($conteos[3]) ? $conteos[3] : 0; ?><br>
-                <strong>Reservados:</strong> <?php echo isset($conteos2[3]) ? $conteos2[3] : 0; ?>
-              </p>
-            </div>
-            <div class="icon">
-              <i class="fas fa-volume-up"></i>
-            </div>
+          <div class="col-lg-3 col-12">
+            <!-- small box -->
+            <div class="small-box bg-info">
+              <div class="inner">
+                <h3>Sonido</h3>
+                <p><strong>Disponibles:</strong> <?php echo isset($conteos[3]) ? $conteos[3] : 0; ?><br>
+                  <strong>Reservados:</strong> <?php echo isset($conteos2[3]) ? $conteos2[3] : 0; ?>
+                </p>
+              </div>
+              <div class="icon">
+                <i class="fas fa-volume-up"></i>
+              </div>
 
+            </div>
           </div>
-        </div>
 
-        <div class="col-lg-3 col-12">
-          <!-- small box -->
-          <div class="small-box bg-info">
-            <div class="inner">
-              <h3>Videobeam</h3>
-              <p><strong>Disponibles:</strong> <?php echo isset($conteos[2]) ? $conteos[2] : 0; ?><br>
-                <strong>Reservados:</strong> <?php echo isset($conteos2[2]) ? $conteos2[2] : 0; ?>
-              </p>
-            </div>
-            <div class="icon">
-              <i class="fas fa-video"></i>
-            </div>
+          <div class="col-lg-3 col-12">
+            <!-- small box -->
+            <div class="small-box bg-info">
+              <div class="inner">
+                <h3>Videobeam</h3>
+                <p><strong>Disponibles:</strong> <?php echo isset($conteos[2]) ? $conteos[2] : 0; ?><br>
+                  <strong>Reservados:</strong> <?php echo isset($conteos2[2]) ? $conteos2[2] : 0; ?>
+                </p>
+              </div>
+              <div class="icon">
+                <i class="fas fa-video"></i>
+              </div>
 
+            </div>
           </div>
-        </div>
 
-        <div class="col-lg-3 col-12 ">
-          <!-- small box -->
-          <div class="small-box bg-info">
-            <div class="inner">
-              <h3>Control remoto</h3>
-              <p><strong>Disponibles:</strong> <?php echo isset($conteos[5]) ? $conteos[5] : 0; ?><br>
-                <strong>Reservados:</strong> <?php echo isset($conteos2[5]) ? $conteos2[5] : 0; ?>
-              </p>
-            </div>
-            <div class="icon">
-              <i class="fas fa-gamepad"></i>
-            </div>
+          <div class="col-lg-3 col-12 ">
+            <!-- small box -->
+            <div class="small-box bg-info">
+              <div class="inner">
+                <h3>Control remoto</h3>
+                <p><strong>Disponibles:</strong> <?php echo isset($conteos[5]) ? $conteos[5] : 0; ?><br>
+                  <strong>Reservados:</strong> <?php echo isset($conteos2[5]) ? $conteos2[5] : 0; ?>
+                </p>
+              </div>
+              <div class="icon">
+                <i class="fas fa-gamepad"></i>
+              </div>
 
+            </div>
           </div>
-        </div>
 
-        <!-- Contenedor principal -->
-        <div class="row col-12">
+          <!-- Contenedor principal -->
+
           <!-- Tarjeta para Estados de Equipos -->
           <div class="col-lg-6 col-md-12">
             <div class="card">
@@ -95,6 +96,7 @@
               </div>
             </div>
           </div>
+
 
           <?php
           $labelsEquipos = [];
@@ -137,40 +139,40 @@
               </div>
             </div>
           </div>
-        </div>
 
-        <?php
-        // Código PHP para obtener datos (mantenido fuera de las tarjetas)
-        $estadosPrestamos = ControladorInicio::ctrObtenerPrestamosPorEstado();
 
-        $labels = [];
-        $data = [];
-        $colors = [];
+          <?php
+          // Código PHP para obtener datos (mantenido fuera de las tarjetas)
+          $estadosPrestamos = ControladorInicio::ctrObtenerPrestamosPorEstado();
 
-        $coloresPorEstado = [
-          'Pendiente' => '#ffc107',
-          'Aprobado' => '#28a745',
-          'Rechazado' => '#dc3545',
-          'Devuelto' => '#17a2b8',
-          'Perdido' => '#673AB7',
-          'En préstamo' => '#007bff'
-        ];
+          $labels = [];
+          $data = [];
+          $colors = [];
 
-        foreach ($estadosPrestamos as $estado) {
-          $labels[] = $estado['estado_prestamo'];
-          $data[] = $estado['cantidad'];
-          $colors[] = $coloresPorEstado[$estado['estado_prestamo']] ?? '#6c757d';
-        }
-        ?>
+          $coloresPorEstado = [
+            'Pendiente' => '#ffc107',
+            'Aprobado' => '#28a745',
+            'Rechazado' => '#dc3545',
+            'Devuelto' => '#17a2b8',
+            'Perdido' => '#673AB7',
+            'En préstamo' => '#007bff'
+          ];
 
-        <!-- fin grafico de estado de prestamo jack -->
+          foreach ($estadosPrestamos as $estado) {
+            $labels[] = $estado['estado_prestamo'];
+            $data[] = $estado['cantidad'];
+            $colors[] = $coloresPorEstado[$estado['estado_prestamo']] ?? '#6c757d';
+          }
+          ?>
 
-        <!--  grafico de prestamo por dia alonso -->
+          <!-- fin grafico de estado de prestamo jack -->
 
-        <div class="row col-12">
-          <div class="col-sm-6">
+          <!--  grafico de prestamo por dia alonso -->
 
-            <div class="card">
+
+          <div class="col-lg-6 col-md-12">
+
+            <div class="card bg-dark">
               <div class="card-header bg-dark">
                 <h3 class="card-title"><i class="fas fa-chart-line"></i> Préstamos Por Día</h3>
                 <div class="card-tools">
@@ -181,48 +183,49 @@
               </div>
 
 
-              <div class="bg-dark">
-
-
-                <?php
-                $prestamos = ControladorInicio::ctrObtenerPrestamosPorDia();
-                $dias = [];
-                $cantidades = [];
-
-                foreach ($prestamos as $registro) {
-                  $dias[] = $registro['dia'];
-                  $cantidades[] = $registro['cantidad'];
-                }
-
-                ?>
-
-
-                <div class="card-body">
-                  <center>
-                    <button type="button" class="btn btn-sm btn-info" id="semana-actual">Semana Actual</button>
-                    <button type="button" class="btn btn-sm btn-secondary" id="semana-anterior">Semana Anterior</button>
-                  </center>
-                </div>
 
 
 
-                <div class="card-body ">
 
-                  <canvas id="line-chart-prestamos"
-                    style="min-height: 250px; height: 263px; background-color:rgba(246, 249, 248, 0.95);"></canvas>
-                </div>
+              <?php
+              $prestamos = ControladorInicio::ctrObtenerPrestamosPorDia();
+              $dias = [];
+              $cantidades = [];
+
+              foreach ($prestamos as $registro) {
+                $dias[] = $registro['dia'];
+                $cantidades[] = $registro['cantidad'];
+              }
+
+              ?>
+
+
+              <div class="card-body">
+                <center>
+                  <button type="button" class="btn btn-sm btn-info" id="semana-actual">Semana Actual</button>
+                  <button type="button" class="btn btn-sm btn-secondary" id="semana-anterior">Semana Anterior</button>
+                </center>
               </div>
+
+              <div class="card-body ">
+
+                <canvas id="line-chart-prestamos"
+                  style="min-height: 263px; height: 200px; background-color:rgba(246, 249, 248, 0.95);"></canvas>
+              </div>
+
             </div>
           </div>
+
 
 
 
           <!-- fin grafico de prestamo por dia alonso -->
 
           <!-- grafico de usuario por ficha franco -->
-          <div class="col-sm-6">
 
-            <div class="card">
+          <div class="col-lg-6 col-md-12">
+
+            <div class="card bg-dark">
               <div class="card-header bg-dark">
                 <h3 class="card-title"><i class="fas fa-chart-bar"></i> Usuarios Por Ficha</h3>
                 <div class="card-tools">
@@ -231,51 +234,54 @@
                   </button>
                 </div>
               </div>
-              <div class="bg-dark">
 
 
-                <div class="card-body">
-                  <div class="form-group">
-                    <center>
-                      <div class="row d-flex justify-content-center">
+
+              <div class="card-body">
+                <div class="form-group">
+                  <center>
+                    <div class="row d-flex justify-content-center">
+                      <div class="col-lg-6">
+                        <div class="input-group">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-id-card"></i></span>
+                          </div>
+                          <input type="text" class="form-control" name="NumeroIdFicha" id="NumeroIdFicha"
+                            placeholder="Número de Fícha" required>
+                        </div>
+                      </div>
+
+                      <center>
                         <div class="col-lg-6">
                           <div class="input-group">
-                            <div class="input-group-prepend">
-                              <span class="input-group-text"><i class="fas fa-id-card"></i></span>
-                            </div>
-                            <input type="text" class="form-control" name="NumeroIdFicha" id="NumeroIdFicha"
-                              placeholder="Número de Fícha" required>
+                            <button class="btn btn-primary" id="btnBuscarFicha"><i class="fas fa-search"></i></button>
                           </div>
                         </div>
-
-                        <center>
-                          <div class="col-lg-6">
-                            <div class="input-group">
-                              <button class="btn btn-primary" id="btnBuscarFicha"><i class="fas fa-search"></i></button>
-                            </div>
-                          </div>
-                        </center>
-                      </div>
-                    </center>
-                  </div>
+                      </center>
+                    </div>
+                  </center>
                 </div>
-
-
-                <div class="card-body ">
-                  <canvas id="graficoUsuarios"
-                    style="min-height: 250px; height: 150px; background-color:rgba(246, 249, 248, 0.95);"></canvas>
-
-                </div>
-
-
-
-                <!-- fin grafico usuarios por ficha >Franco -->
               </div>
+
+
+              <div class="card-body ">
+                <canvas id="graficoUsuarios"
+                  style="min-height: 250px; height: 150px; background-color:rgba(246, 249, 248, 0.95);"></canvas>
+
+              </div>
+
+
+
+              <!-- fin grafico usuarios por ficha >Franco -->
+
             </div><!-- /.row -->
           </div>
         </div>
+
       </div>
     </div>
+</div>
+</div>
 </div>
 
 </section>
@@ -318,7 +324,7 @@
             font: {
               size: 12
             },
-            generateLabels: function (chart) {
+            generateLabels: function(chart) {
               const data = chart.data;
               return data.labels.map((label, i) => {
                 const value = data.datasets[0].data[i];
@@ -335,7 +341,7 @@
         },
         tooltip: {
           callbacks: {
-            label: function (context) {
+            label: function(context) {
               const label = context.label || '';
               const value = context.raw || 0;
               const percentage = totalPrestamos > 0 ? Math.round((value / totalPrestamos) * 100) : 0;
@@ -389,7 +395,7 @@
             font: {
               size: 12
             },
-            generateLabels: function (chart) {
+            generateLabels: function(chart) {
               const data = chart.data;
               return data.labels.map((label, i) => {
                 const value = data.datasets[0].data[i];
@@ -406,7 +412,7 @@
         },
         tooltip: {
           callbacks: {
-            label: function (context) {
+            label: function(context) {
               const label = context.label || '';
               const value = context.raw || 0;
               const percentage = totalEquipos > 0 ? Math.round((value / totalEquipos) * 100) : 0;
@@ -424,6 +430,4 @@
   document.querySelector('#leyenda-equipos').appendChild(
     generateLegendEquipos(pieChartEquipos)
   );
-
-
 </script>
