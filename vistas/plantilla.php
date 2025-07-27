@@ -40,7 +40,7 @@ session_start();
   <link rel="stylesheet" href="vistas/plugins/toastr/toastr.min.css">
 
   <!-- CDN DE DRIVER.JS -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/driver.js@latest/dist/driver.css"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/driver.js@latest/dist/driver.css" />
   <!-- ================================================================================================== -->
 
   <!-- jQuery -->
@@ -117,6 +117,7 @@ session_start();
             id: ' . $_SESSION['id_usuario'] . ',
             permisos: ' . json_encode($_SESSION['permisos']) . '  
         }
+            console.log("Usuario actual:", usuarioActual);
     </script>';
 
     echo '<div class="wrapper">';
